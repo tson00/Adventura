@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -29,14 +31,18 @@ import uiText.TextoveRozhrani;
  * @author xzenj02
  */
 public class Main extends Application {
+    
+    private TextArea centralText;// smazat TextArea
+    private IHra hra; //smazat IHra
+    private TextField zadejPrikazTextArea;//smazat TextField
 
     @Override
     public void start(Stage primaryStage) {
-        IHra hra = new Hra();
+      hra = new Hra(); //smazat IHra smazano
         BorderPane borderPane = new BorderPane();
         
         
-        TextArea centralText = new TextArea();
+        centralText = new TextArea();//smazat TextArea
         centralText.setText(hra.vratUvitani());
         centralText.setEditable(false);
         borderPane.setCenter(centralText);
@@ -44,7 +50,7 @@ public class Main extends Application {
         Label zadejPrikazLabel = new Label("Zadej prikaz: ");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         
-        TextField zadejPrikazTextArea= new TextField("...");
+         zadejPrikazTextArea= new TextField("...");//smazzat TextField
         zadejPrikazTextArea.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -61,12 +67,25 @@ public class Main extends Application {
                
             }
         });
+        
+        //obrazek s mapou
+        FlowPane obrazekFlowPane= new FlowPane();
+        obrazekFlowPane.setPrefSize(200, 200);
+        ImageView obrazekImageView= new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"), 200,200,false,true) );
+        obrazekFlowPane.setAlignment(Pos.CENTER);
+        obrazekFlowPane.getChildren().add(obrazekImageView);
+        
+        //dolni lista s elementy
+        
+        
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
         dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea);
+        
+        borderPane.setLeft(obrazekFlowPane);
         borderPane.setBottom(dolniLista);
         
-        Scene scene = new Scene(borderPane, 500, 350);
+        Scene scene = new Scene(borderPane, 750, 450);
 
         primaryStage.setTitle("Adventura");
 

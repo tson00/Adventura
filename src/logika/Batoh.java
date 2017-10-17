@@ -1,4 +1,4 @@
-nap/* Soubor je ulozen v kodovani UTF-8.
+/* Soubor je ulozen v kodovani UTF-8.
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package logika;
 import java.util.*;
