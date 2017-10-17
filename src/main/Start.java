@@ -32,5 +32,7 @@ public class Start
            
             ui.hrajZeSouboru(new java.io.File(args[0]));
         }
+     
+           
     }
 }
