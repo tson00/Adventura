@@ -43,11 +43,11 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
      
-        Prostor zoo = new Prostor("Zoo","Zoo a chcete dostat domu do džungle");
-        Prostor mesto = new Prostor("Mesto", "Město tady musíte tančit");
-        Prostor lod = new Prostor("Lod","Lod nezapomente na vestu");
-        Prostor plaz = new Prostor("Plaz","Pláž tady je horko");
-        Prostor dzungle = new Prostor("Dzungle","Džungle tady je vaši rodina");
+        Prostor zoo = new Prostor("Zoo","Zoo a chcete dostat domu do džungle",110,50);
+        Prostor mesto = new Prostor("Mesto", "Město tady musíte tančit",20,50);
+        Prostor lod = new Prostor("Lod","Lod nezapomente na vestu",40,70);
+        Prostor plaz = new Prostor("Plaz","Pláž tady je horko",42,89);
+        Prostor dzungle = new Prostor("Dzungle","Džungle tady je vaši rodina",41,180);
         Postava lovec1=new Postava("Lovec1","\nMusíš se schovat!",plaz);
         Postava lovec2=new Postava("Lovec2","\nMusíš se schovat!",mesto);
         Postava lovec3=new Postava("Lovec3","\nMusíš se schovat!",lod);
