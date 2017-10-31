@@ -5,6 +5,8 @@
  */
 package main;
 
+import GUI.Mapa;
+import GUI.MenuLista;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -16,9 +18,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -35,17 +40,21 @@ public class Main extends Application {
     private TextArea centralText;// smazat TextArea
     private IHra hra; //smazat IHra
     private TextField zadejPrikazTextArea;//smazat TextField
+    private Mapa mapa;
+    private MenuLista menuLista;
 
     @Override
     public void start(Stage primaryStage) {
-      hra = new Hra(); //smazat IHra smazano
+        setHra(new Hra()); //smazat IHra smazano
+      mapa =new Mapa(hra);
+      menuLista=new MenuLista(hra, this);
         BorderPane borderPane = new BorderPane();
         
         
         centralText = new TextArea();//smazat TextArea
-        centralText.setText(hra.vratUvitani());
-        centralText.setEditable(false);
-        borderPane.setCenter(centralText);
+        getCentralText().setText(hra.vratUvitani());
+        getCentralText().setEditable(false);
+        borderPane.setCenter(getCentralText());
         
         Label zadejPrikazLabel = new Label("Zadej prikaz: ");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
@@ -56,34 +65,28 @@ public class Main extends Application {
             public void handle(ActionEvent event) {
                 String vstupniPrikaz = zadejPrikazTextArea.getText();//ulozim prikazy ze hry
                 String odpovedHry= hra.zpracujPrikaz(vstupniPrikaz);
-                centralText.appendText("\n"+vstupniPrikaz + "\n");
-                centralText.appendText("\n"+odpovedHry + "\n");
+                getCentralText().appendText("\n"+vstupniPrikaz + "\n");
+                getCentralText().appendText("\n"+odpovedHry + "\n");
                 zadejPrikazTextArea.setText("");
                 if (hra.konecHry())
                 {
                 zadejPrikazTextArea.setEditable(false);
-                centralText.appendText(hra.vratEpilog());
+                    getCentralText().appendText(hra.vratEpilog());
                 }
                
             }
         });
         
-        //obrazek s mapou
-        FlowPane obrazekFlowPane= new FlowPane();
-        obrazekFlowPane.setPrefSize(200, 200);
-        ImageView obrazekImageView= new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"), 200,200,false,true) );
-        obrazekFlowPane.setAlignment(Pos.CENTER);
-        obrazekFlowPane.getChildren().add(obrazekImageView);
-        
-        //dolni lista s elementy
+      
         
         
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
         dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea);
         
-        borderPane.setLeft(obrazekFlowPane);
+        borderPane.setLeft(mapa);
         borderPane.setBottom(dolniLista);
+        borderPane.setTop(menuLista);
         
         Scene scene = new Scene(borderPane, 750, 450);
 
@@ -94,6 +97,22 @@ public class Main extends Application {
         zadejPrikazTextArea.requestFocus();//nemusim klikat na text
     }
 
+    public Mapa getMapa() {
+        return mapa;
+    }
+/*private AnchorPane nastaveniMapy(){
+
+AnchorPane obrazekPane= new AnchorPane();
+
+        ImageView obrazekImageView= new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"), 200,200,false,true) );
+        Circle tecka= new Circle(10, Paint.valueOf("red"));
+        obrazekPane.setTopAnchor(tecka,25.0);
+         obrazekPane.setLeftAnchor(tecka,100.0);
+       
+        obrazekPane.getChildren().addAll(obrazekImageView,tecka);
+        return obrazekPane;
+
+}*/
     /**
      * @param args the command line arguments
      */
@@ -112,6 +131,20 @@ public class Main extends Application {
                 System.exit(1);
             }
         }
+    }
+
+    /**
+     * @return the centralText
+     */
+    public TextArea getCentralText() {
+        return centralText;
+    }
+
+    /**
+     * @param hra the hra to set
+     */
+    public void setHra(IHra hra) {
+        this.hra = hra;
     }
 
 }

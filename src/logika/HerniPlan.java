@@ -2,6 +2,8 @@ package logika;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import utils.Subject;
+import utils.Observer;
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -12,8 +14,9 @@ import java.util.stream.Collectors;
  *
  *@author     Tsoy Nadezhda
  *@version    pro školní rok 2016/2017
+ * //herni plan je Subject
  */
-public class HerniPlan {
+public class HerniPlan implements Subject{
     
     private Prostor aktualniProstor;
     private Prostor vyherniProstor;
@@ -24,6 +27,8 @@ public class HerniPlan {
     private Prostor prostor;
     private Map<String,Postava> seznamPostav;
     private Postava postava;
+    private List<Observer> listObserveru=new ArrayList<Observer>();
+    
 
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -43,11 +48,12 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
      
-        Prostor zoo = new Prostor("Zoo","Zoo a chcete dostat domu do džungle",110,50);
-        Prostor mesto = new Prostor("Mesto", "Město tady musíte tančit",20,50);
+        Prostor zoo = new Prostor("Zoo","Zoo a chcete dostat domu do džungle",0,50);
+        Prostor mesto = new Prostor("Mesto", "Město tady musíte tančit",100,100);
         Prostor lod = new Prostor("Lod","Lod nezapomente na vestu",40,70);
         Prostor plaz = new Prostor("Plaz","Pláž tady je horko",42,89);
         Prostor dzungle = new Prostor("Dzungle","Džungle tady je vaši rodina",41,180);
+        
         Postava lovec1=new Postava("Lovec1","\nMusíš se schovat!",plaz);
         Postava lovec2=new Postava("Lovec2","\nMusíš se schovat!",mesto);
         Postava lovec3=new Postava("Lovec3","\nMusíš se schovat!",lod);
@@ -164,6 +170,7 @@ public class HerniPlan {
      */
     public void setAktualniProstor(Prostor prostor) {
        aktualniProstor = prostor;
+       notifyObservers();
      
     }
       /**
@@ -315,6 +322,25 @@ public class HerniPlan {
         for (Postava postava : seznamPostav.values()) {
             postava.prejdi();
         }
+    }
+
+    @Override
+    public void registerObserver(utils.Observer observer) {
+        listObserveru.add(observer);
+    }
+
+    @Override
+    public void removeObserver(utils.Observer observer) {
+       listObserveru.remove(observer);
+               }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer listObserveruItem  : listObserveru) {
+            listObserveruItem.update();
+            
+        }
+      
     }
   
 
