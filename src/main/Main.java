@@ -42,9 +42,11 @@ public class Main extends Application {
     private TextField zadejPrikazTextArea;//smazat TextField
     private Mapa mapa;
     private MenuLista menuLista;
+    private Stage stage;
 
     @Override
     public void start(Stage primaryStage) {
+        this.stage=primaryStage;
         setHra(new Hra()); //smazat IHra smazano
       mapa =new Mapa(hra);
       menuLista=new MenuLista(hra, this);
@@ -145,6 +147,13 @@ AnchorPane obrazekPane= new AnchorPane();
      */
     public void setHra(IHra hra) {
         this.hra = hra;
+    }
+
+    /**
+     * @return the stage
+     */
+    public Stage getStage() {
+        return stage;
     }
 
 }
