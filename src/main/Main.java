@@ -7,6 +7,7 @@ package main;
 
 import GUI.Mapa;
 import GUI.MenuLista;
+import GUI.Batoh;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,6 +44,7 @@ public class Main extends Application {
     private Mapa mapa;
     private MenuLista menuLista;
     private Stage stage;
+    private Batoh batoh;
 
     @Override
     public void start(Stage primaryStage) {
@@ -50,6 +52,7 @@ public class Main extends Application {
         setHra(new Hra()); //smazat IHra smazano
       mapa =new Mapa(hra);
       menuLista=new MenuLista(hra, this);
+      batoh=new Batoh(hra);
         BorderPane borderPane = new BorderPane();
         
         
@@ -73,8 +76,10 @@ public class Main extends Application {
                 if (hra.konecHry())
                 {
                 zadejPrikazTextArea.setEditable(false);
-                    getCentralText().appendText(hra.vratEpilog());
+                  getCentralText().appendText(hra.vratEpilog());
+                    // System.exit(0);
                 }
+
                
             }
         });
@@ -89,6 +94,7 @@ public class Main extends Application {
         borderPane.setLeft(mapa);
         borderPane.setBottom(dolniLista);
         borderPane.setTop(menuLista);
+        borderPane.setRight(batoh);
         
         Scene scene = new Scene(borderPane, 750, 450);
 
@@ -101,6 +107,13 @@ public class Main extends Application {
 
     public Mapa getMapa() {
         return mapa;
+    }
+    
+    
+    public Batoh getBatoh()
+    {
+    
+    return batoh;
     }
 /*private AnchorPane nastaveniMapy(){
 

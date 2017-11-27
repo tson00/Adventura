@@ -60,6 +60,8 @@ public class MenuLista extends MenuBar{
         main.getMapa().newGame(hra);
         main.setHra(hra);
         main.getCentralText().setText(hra.vratUvitani());
+      //  main.getTextArea().zadejPrikazTextArea.setEditable(false);
+      
         }
     });
    
