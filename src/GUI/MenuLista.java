@@ -36,14 +36,14 @@ public class MenuLista extends MenuBar{
     private void init(){
     Menu novysoubor= new Menu("Adventura");
     Menu napoveda = new Menu("Help");
-    MenuItem novaHra=new MenuItem("Nova hra");
+    MenuItem novaHra=new MenuItem("Nová hra");
    // MenuItem novaHra=new MenuItem("Nova hra",new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"))));
     novaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
     MenuItem konecHry=new MenuItem("Konec hry");
     novysoubor.getItems().addAll(novaHra,konecHry);
     
-    MenuItem oProgramu = new MenuItem("o programu");
-     MenuItem napovedaItem = new MenuItem("Napoveda");
+    MenuItem oProgramu = new MenuItem("O mě");
+     MenuItem napovedaItem = new MenuItem("Napověda");
      napoveda.getItems().addAll(oProgramu,napovedaItem);
     this.getMenus().addAll(novysoubor,napoveda);
     
@@ -67,9 +67,9 @@ public class MenuLista extends MenuBar{
         @Override
         public void handle(ActionEvent event) {
           Alert oProgramuAlert=new Alert(Alert.AlertType.INFORMATION);//misto information dat error
-          oProgramuAlert.setTitle("O pragramu");
-          oProgramuAlert.setHeaderText("Adventura o opicce");
-          oProgramuAlert.setContentText("Samotny text");
+          oProgramuAlert.setTitle("O mě");
+          oProgramuAlert.setHeaderText("Тsoy Nadezhda");
+          oProgramuAlert.setContentText("tson00 út 09:15");
           oProgramuAlert.initOwner(main.getStage());
           oProgramuAlert.showAndWait();
         }
