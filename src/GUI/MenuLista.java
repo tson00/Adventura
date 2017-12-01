@@ -37,6 +37,7 @@ public class MenuLista extends MenuBar{
     Menu novysoubor= new Menu("Adventura");
     Menu napoveda = new Menu("Help");
     MenuItem novaHra=new MenuItem("Nová hra");
+       
    // MenuItem novaHra=new MenuItem("Nova hra",new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"))));
     novaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
     MenuItem konecHry=new MenuItem("Konec hry");

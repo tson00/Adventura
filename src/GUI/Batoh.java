@@ -5,14 +5,16 @@
  */
 package GUI;
 
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
+
 import logika.IHra;
 import main.Main;
 import utils.Observer;
+import javafx.scene.layout.BorderPane;
 
 /**
  *
@@ -20,6 +22,9 @@ import utils.Observer;
  */
 public class Batoh extends AnchorPane implements Observer {
       public IHra hra;
+              BorderPane borderPane = new BorderPane();
+
+       
         public Batoh(IHra hra){
   
   this.hra=hra;
@@ -30,13 +35,22 @@ public class Batoh extends AnchorPane implements Observer {
     
 
         ImageView obrazekImageView= new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/batoh.jpg"), 200,200,false,true) );
-        
+         
+         Button button1 =new Button();
+     Button button2 =new Button();
+      Button button3 =new Button();
+       Button button4 =new Button();
+        Button button5 =new Button();
        
      //   this.setTopAnchor(tecka,posTop);
      //    this.setLeftAnchor(tecka,posLeft);
        
-        this.getChildren().addAll(obrazekImageView);
-       update();
+    //    this.getChildren().addAll(obrazekImageView,button1,button2,button3,button4,button5);
+          this.getChildren().addAll(button1,button2,button3,button4,button5);
+       
+        
+        
+        update();
   
   }
         public void newGame(IHra novaHra){
@@ -48,6 +62,7 @@ public class Batoh extends AnchorPane implements Observer {
   
   
   }
+       
 
     @Override
     public void update() {

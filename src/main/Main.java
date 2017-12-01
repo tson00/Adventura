@@ -8,9 +8,11 @@ package main;
 import GUI.Mapa;
 import GUI.MenuLista;
 import GUI.Batoh;
+import GUI.Prostory;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +31,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import logika.*;
 import uiText.TextoveRozhrani;
 
@@ -45,6 +49,9 @@ public class Main extends Application {
     private MenuLista menuLista;
     private Stage stage;
     private Batoh batoh;
+    private Prostory prostory;
+ 
+    
 
     @Override
     public void start(Stage primaryStage) {
@@ -53,6 +60,7 @@ public class Main extends Application {
       mapa =new Mapa(hra);
       menuLista=new MenuLista(hra, this);
       batoh=new Batoh(hra);
+      prostory=new Prostory(hra);
         BorderPane borderPane = new BorderPane();
         
         
@@ -60,6 +68,8 @@ public class Main extends Application {
         getCentralText().setText(hra.vratUvitani());
         getCentralText().setEditable(false);
         borderPane.setCenter(getCentralText());
+       
+        
         
         Label zadejPrikazLabel = new Label("Zadej prikaz: ");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
@@ -90,12 +100,20 @@ public class Main extends Application {
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
         dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea);
-        
-        borderPane.setLeft(mapa);
+        FlowPane levaLista=new FlowPane(Orientation.VERTICAL);
+        levaLista.setAlignment(Pos.CENTER);
+        levaLista.getChildren().addAll(mapa,prostory);
+     //  borderPane.setLeft(mapa);
+    //   borderPane.setLeft(prostory);
+    borderPane.setLeft(levaLista);
         borderPane.setBottom(dolniLista);
         borderPane.setTop(menuLista);
-        borderPane.setRight(batoh);
         
+         
+        
+        
+   //  borderPane.setRight(batoh);
+     //   borderPane.setRight(menuLista);
         Scene scene = new Scene(borderPane, 750, 450);
 
         primaryStage.setTitle("Adventura");
