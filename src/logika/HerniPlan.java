@@ -89,7 +89,8 @@ public class HerniPlan implements Subject{
            Vec dira = new Vec("dira", false,false,true);
             Vec krovi = new Vec("krovi", false,false,false);
              Vec palma = new Vec("palma", false,false,true);
-         
+          Vec sacek = new Vec("sacek",true,false,false);
+       
         Vec banan1 =  new Vec("banan1",true,true,false);
           Vec banan2 =  new Vec("banan2",true,true,false);
           Vec banan3 = new Vec("banan3",true,true,false);
@@ -102,10 +103,9 @@ public class HerniPlan implements Subject{
       Vec salat = new Vec ("salat", false,true,false);
        Vec chleb = new Vec ("chleb", false,true,false);
   
-         Vec lahev = new  Vec("lahev", true,false,false);
-         Vec klobasa = new  Vec("vesta", true,false,false);
-         Vec sacek = new Vec("sacek",true,false,false);
-       
+         
+        
+        
         zoo.vlozVec(banan1);
          zoo.vlozVec(banan2);
          zoo.vlozVec(banan3);
@@ -122,7 +122,7 @@ public class HerniPlan implements Subject{
          
          
         lod.vlozVec(houska);
-        lod.vlozVec(klobasa);
+      
          lod.vlozVec(dira);
           lod.vlozVec(krovi);
            lod.vlozVec(paprika);

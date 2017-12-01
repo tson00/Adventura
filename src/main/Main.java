@@ -7,7 +7,8 @@ package main;
 
 import GUI.Mapa;
 import GUI.MenuLista;
-import GUI.Batoh;
+
+import GUI.AktualniVeci;
 import GUI.Prostory;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -31,8 +32,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import logika.*;
 import uiText.TextoveRozhrani;
 
@@ -48,7 +48,7 @@ public class Main extends Application {
     private Mapa mapa;
     private MenuLista menuLista;
     private Stage stage;
-    private Batoh batoh;
+    private AktualniVeci aktualniVeci;
     private Prostory prostory;
  
     
@@ -59,16 +59,12 @@ public class Main extends Application {
         setHra(new Hra()); //smazat IHra smazano
       mapa =new Mapa(hra);
       menuLista=new MenuLista(hra, this);
-      batoh=new Batoh(hra);
+      aktualniVeci=new AktualniVeci(hra);
       prostory=new Prostory(hra);
         BorderPane borderPane = new BorderPane();
         
         
-        centralText = new TextArea();//smazat TextArea
-        getCentralText().setText(hra.vratUvitani());
-        getCentralText().setEditable(false);
-        borderPane.setCenter(getCentralText());
-       
+ 
         
         
         Label zadejPrikazLabel = new Label("Zadej prikaz: ");
@@ -96,31 +92,42 @@ public class Main extends Application {
         
       
         
-        
         FlowPane dolniLista = new FlowPane();
         dolniLista.setAlignment(Pos.CENTER);
         dolniLista.getChildren().addAll(zadejPrikazLabel,zadejPrikazTextArea);
+        borderPane.setBottom(dolniLista);
+        
         FlowPane levaLista=new FlowPane(Orientation.VERTICAL);
         levaLista.setAlignment(Pos.CENTER);
         levaLista.getChildren().addAll(mapa,prostory);
+        borderPane.setLeft(levaLista);
+        
+   //    FlowPane pravaLista=new FlowPane(Orientation.VERTICAL);
+   //     pravaLista.setAlignment(Pos.CENTER);
+   //     pravaLista.getChildren().addAll(aktualniVeci);
+   //     borderPane.setRight(aktualniVeci);
+        
      //  borderPane.setLeft(mapa);
     //   borderPane.setLeft(prostory);
-    borderPane.setLeft(levaLista);
-        borderPane.setBottom(dolniLista);
+  
         borderPane.setTop(menuLista);
+        borderPane.setRight(aktualniVeci);
         
-         
-        
-        
-   //  borderPane.setRight(batoh);
-     //   borderPane.setRight(menuLista);
-        Scene scene = new Scene(borderPane, 750, 450);
+               Scene scene = new Scene(borderPane, 750, 450);
 
         primaryStage.setTitle("Adventura");
 
         primaryStage.setScene(scene);
         primaryStage.show();
         zadejPrikazTextArea.requestFocus();//nemusim klikat na text
+        
+        centralText = new TextArea();//smazat TextArea
+        getCentralText().setText(hra.vratUvitani());
+        getCentralText().setEditable(false);
+        borderPane.setCenter(getCentralText());
+       
+        // borderPane.setRight(aktualniVeci);
+
     }
 
     public Mapa getMapa() {
@@ -128,11 +135,11 @@ public class Main extends Application {
     }
     
     
-    public Batoh getBatoh()
-    {
+  //  public AktualniVeci getAktualniVeci()
+  //  {
     
-    return batoh;
-    }
+  //  return aktualniVeci;
+   // }
 /*private AnchorPane nastaveniMapy(){
 
 AnchorPane obrazekPane= new AnchorPane();
