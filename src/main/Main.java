@@ -9,6 +9,7 @@ import GUI.Mapa;
 import GUI.MenuLista;
 
 import GUI.AktualniVeci;
+import GUI.ObsahBatohu;
 import GUI.Prostory;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -50,6 +51,7 @@ public class Main extends Application {
     private Stage stage;
     private AktualniVeci aktualniVeci;
     private Prostory prostory;
+    private ObsahBatohu obsahBatohu;
  
     
 
@@ -61,6 +63,7 @@ public class Main extends Application {
       menuLista=new MenuLista(hra, this);
       aktualniVeci=new AktualniVeci(hra);
       prostory=new Prostory(hra);
+      obsahBatohu=new ObsahBatohu(hra);
         BorderPane borderPane = new BorderPane();
         
         
@@ -102,18 +105,18 @@ public class Main extends Application {
         levaLista.getChildren().addAll(mapa,prostory);
         borderPane.setLeft(levaLista);
         
-   //    FlowPane pravaLista=new FlowPane(Orientation.VERTICAL);
-   //     pravaLista.setAlignment(Pos.CENTER);
-   //     pravaLista.getChildren().addAll(aktualniVeci);
-   //     borderPane.setRight(aktualniVeci);
+     FlowPane pravaLista=new FlowPane(Orientation.VERTICAL);
+       pravaLista.setAlignment(Pos.CENTER);
+    pravaLista.getChildren().addAll(obsahBatohu,aktualniVeci);
+    borderPane.setRight(pravaLista);
         
      //  borderPane.setLeft(mapa);
     //   borderPane.setLeft(prostory);
   
         borderPane.setTop(menuLista);
-        borderPane.setRight(aktualniVeci);
+      //  borderPane.setRight(aktualniVeci);
         
-               Scene scene = new Scene(borderPane, 750, 450);
+               Scene scene = new Scene(borderPane, 1000, 700);
 
         primaryStage.setTitle("Adventura");
 
@@ -122,9 +125,14 @@ public class Main extends Application {
         zadejPrikazTextArea.requestFocus();//nemusim klikat na text
         
         centralText = new TextArea();//smazat TextArea
+   /*      double height = 400; 
+    double width = 300; 
+    centralText.setPrefHeight(height);  
+    centralText.setPrefWidth(width);*/
         getCentralText().setText(hra.vratUvitani());
         getCentralText().setEditable(false);
         borderPane.setCenter(getCentralText());
+       
        
         // borderPane.setRight(aktualniVeci);
 
