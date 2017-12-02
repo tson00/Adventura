@@ -19,20 +19,22 @@ public class Vec
     private boolean prenositelnost;
     private boolean jejidlo;
     private boolean schovatse;
-
+     private String obrazek;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....
      */
     public Vec(String nazev, boolean prenositelnost,
-    boolean jejidlo,boolean schovatse)
+    boolean jejidlo,boolean schovatse,String obrazek)
     {
         this.nazev = nazev;
 
         this.prenositelnost = prenositelnost;
         this.jejidlo=jejidlo;
         this.schovatse=schovatse;
+        
+        this.obrazek=obrazek;
 
     }
 
@@ -68,4 +70,18 @@ public class Vec
     }
 
     //== Soukromé metody (instancí i třídy) ========================================
+
+    /**
+     * @return the obrazek
+     */
+    public String getObrazek() {
+        return obrazek;
+    }
+
+    /**
+     * @param obrazek the obrazek to set
+     */
+    public void setObrazek(String obrazek) {
+        this.obrazek = obrazek;
+    }
 }

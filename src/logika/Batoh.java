@@ -111,6 +111,9 @@ public boolean jeTamVec (String nazev) {
         return veci.containsKey(nazev);
 
     }
+    public Map<String, Vec> getVeci() {
+        return veci;
+    }
 //== Soukromé metody (instancí i třídy) ========================================
 
 }

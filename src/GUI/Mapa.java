@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package GUI;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,14 +15,12 @@ import utils.Observer;
 
 /**
  *
- * @author acer
+ * @author Tsoy Nadezhda
  */
 public class Mapa extends AnchorPane implements Observer {
   public IHra hra;
   private Circle tecka;
-  
- // private double posTop=0.0;
- // private double posLeft=0.0;
+
   public Mapa(IHra hra){
    
   this.hra=hra;
@@ -36,10 +32,7 @@ public class Mapa extends AnchorPane implements Observer {
 
         ImageView obrazekImageView= new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"), 200,200,false,true) );
         tecka= new Circle(9, Paint.valueOf("red"));
-     //   this.setPrefHigh(150);
-       
-     //   this.setTopAnchor(tecka,posTop);
-     //    this.setLeftAnchor(tecka,posLeft);
+    
        
         this.getChildren().addAll(obrazekImageView,tecka);
         

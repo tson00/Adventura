@@ -12,83 +12,89 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import logika.Hra;
-import logika.IHra;
 import main.Main;
+
+
 
 /**
  *
- * @author acer
+ * @author Tsoy Nadezhda
  */
 public class MenuLista extends MenuBar{
-    private IHra hra;
-    private Main main;
-    public MenuLista(IHra hra,Main main){
-        this.hra=hra;
-        this.main=main;
-    init();
+    
+private Main main;
+    
+    public MenuLista(Main main){
+        this.main = main;
+        init();
     }
-    private void init(){
-    Menu novysoubor= new Menu("Adventura");
-    Menu napoveda = new Menu("Help");
-    MenuItem novaHra=new MenuItem("Nová hra");
-       
-   // MenuItem novaHra=new MenuItem("Nova hra",new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"))));
-    novaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+H"));
-    MenuItem konecHry=new MenuItem("Konec hry");
-    novysoubor.getItems().addAll(novaHra,konecHry);
-    
-    MenuItem oProgramu = new MenuItem("O mě");
-     MenuItem napovedaItem = new MenuItem("Napověda");
-     napoveda.getItems().addAll(oProgramu,napovedaItem);
-    this.getMenus().addAll(novysoubor,napoveda);
-    
-   konecHry.setOnAction(new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            System.exit(0);
-        }
-    });
-   novaHra.setOnAction(new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-            hra =new Hra();     
-        main.getMapa().newGame(hra);
-        main.setHra(hra);
-        main.getCentralText().setText(hra.vratUvitani());
-      //  main.getTextArea().zadejPrikazTextArea.setEditable(false);
-      
-        }
-    });
-   
-   oProgramu.setOnAction(new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-          Alert oProgramuAlert=new Alert(Alert.AlertType.INFORMATION);//misto information dat error
-          oProgramuAlert.setTitle("O mě");
-          oProgramuAlert.setHeaderText("Тsoy Nadezhda");
-          oProgramuAlert.setContentText("tson00 út 09:15");
-          oProgramuAlert.initOwner(main.getStage());
-          oProgramuAlert.showAndWait();
-        }
-    });
-   
-   napovedaItem.setOnAction(new EventHandler<ActionEvent>() {
-        @Override
-        public void handle(ActionEvent event) {
-         Stage stage =new Stage();
-         stage.setTitle("Napoveda");
-         WebView webView =new WebView();
-         webView.getEngine().load(Main.class.getResource("/zdroje/napoveda.html").toExternalForm());
-         stage.setScene(new Scene(webView, 500,500));
-         stage.show();
-        }
-    });
-}}
-    
+  private void init(){
+        Menu menuSoubor = new Menu("Advenura");
+        
+        MenuItem itemNovaHra = new MenuItem("Nová hra");
 
+        itemNovaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
+        
+        MenuItem itemKonec = new MenuItem("Konec");
+        
+        
+        Menu menuHelp = new Menu("Help");
+        MenuItem itemOProgramu = new MenuItem("O programu");
+        MenuItem itemNapoveda = new MenuItem("Napoveda");
+        
+        
+        menuSoubor.getItems().addAll(itemNovaHra, itemKonec);
+        menuHelp.getItems().addAll(itemOProgramu, itemNapoveda);
+        
+        this.getMenus().addAll(menuSoubor, menuHelp);
+        
+        itemOProgramu.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("O Adventure");
+                alert.setHeaderText("Toto je ma adventura");
+                alert.setContentText("Graficka verze adventury");
+                alert.initOwner(main.getStage());
+                alert.showAndWait();
+            }
+        });
+        
+        itemNapoveda.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                Stage stage = new Stage();
+                stage.setTitle("Napoveda");
+                WebView webview = new WebView();
+                
+                webview.getEngine().load(Main.class.getResource("/zdroje/napoveda.html").toExternalForm());
+                
+                stage.setScene(new Scene(webview, 500, 500));
+                stage.show();
+            }
+        });
+        
+        itemKonec.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                System.exit(0);
+            }
+        });
+        
+        itemNovaHra.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                main.novaHra();
+            }
+        });
+        
+    }      
+        
+}

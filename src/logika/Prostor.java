@@ -218,6 +218,8 @@ public class Prostor {
     public boolean jeVecVProstoru(String nazev){
         return veci.containsKey(nazev);
     }
+    
+    
 /**
  * metoda odeber Vec
  * @param nazev
@@ -240,6 +242,26 @@ public class Prostor {
     public double getPosTop() {
         return posTop;
     }
+    
+     /**
+     * @return the vracenyText
+     */
+    
 
-
+ public String seznamVychoduProPanely() 
+    {
+        String vracenyText = "vychody:";
+        for (Prostor sousedni : vychody) {
+             vracenyText += " " + sousedni.getNazev();
+        }
+        return vracenyText;
+    }
+  /**
+     * @return the veci
+     */
+ 
+   public Map<String,Vec> getVeci()
+     {
+         return this.veci;
+     }
 }

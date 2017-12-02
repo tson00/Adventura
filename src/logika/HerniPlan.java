@@ -82,26 +82,26 @@ public class HerniPlan implements Subject{
              seznamPostav.put(lovec2.getJmeno(),lovec2);
                   seznamPostav.put(lovec3.getJmeno(),lovec3);
                        seznamPostav.put(lovec4.getJmeno(),lovec4);
-     Vec stul = new Vec("stul",false,false,false);
-       Vec lavicka = new Vec("lavicka", false,false,true);
-         Vec kos = new Vec("kos", false,false,false);
-          Vec strom = new Vec("strom", false,false,true);
-           Vec dira = new Vec("dira", false,false,true);
-            Vec krovi = new Vec("krovi", false,false,false);
-             Vec palma = new Vec("palma", false,false,true);
-          Vec sacek = new Vec("sacek",true,false,false);
+     Vec stul = new Vec("stul",false,false,false,"/zdroje/stul.jpg");
+       Vec lavicka = new Vec("lavicka", false,false,true,"/zdroje/lavicka.jpg");
+        // Vec kos = new Vec("kos", false,false,false);
+          Vec strom = new Vec("strom", false,false,true,"/zdroje/strom.jpg");
+           Vec dira = new Vec("dira", false,false,true,"/zdroje/dira.jpg");
+            Vec krovi = new Vec("krovi", false,false,false,"/zdroje/krovi.jpg");
+             Vec palma = new Vec("palma", false,false,true,"/zdroje/palma.jpg");
+          Vec sacek = new Vec("sacek",true,false,false,"/zdroje/sacek.jpg");
        
-        Vec banan1 =  new Vec("banan1",true,true,false);
-          Vec banan2 =  new Vec("banan2",true,true,false);
-          Vec banan3 = new Vec("banan3",true,true,false);
-        Vec kokos = new Vec ("kokos", false,true,false);
-         Vec jablko = new Vec ("jablko", false,true,false);
-         Vec houska = new Vec ("houska", false,true,false);
-       Vec ananas = new Vec ("ananas", false,true,false);
-        Vec jahoda = new Vec ("jahoda", false,true,false);
-        Vec paprika = new Vec ("paprika", false,true,false);
-      Vec salat = new Vec ("salat", false,true,false);
-       Vec chleb = new Vec ("chleb", false,true,false);
+        Vec banan1 =  new Vec("banan1",true,true,false,"/zdroje/banan1.jpg");
+          Vec banan2 =  new Vec("banan2",true,true,false,"/zdroje/banan2.jpg");
+          Vec banan3 = new Vec("banan3",true,true,false,"/zdroje/banan3.jpg");
+        Vec kokos = new Vec ("kokos", false,true,false,"/zdroje/kokos.jpeg");
+         Vec jablko = new Vec ("jablko", false,true,false,"/zdroje/jablko.jpg");
+         Vec houska = new Vec ("houska", false,true,false,"/zdroje/houska.jpg");
+       Vec ananas = new Vec ("ananas", false,true,false,"/zdroje/ananas.jpg");
+        Vec jahoda = new Vec ("jahoda", false,true,false,"/zdroje/jahoda.jpg");
+        Vec paprika = new Vec ("paprika", false,true,false,"/zdroje/paprika.jpg");
+      Vec salat = new Vec ("salat", false,true,false,"/zdroje/salat.jpg");
+       Vec chleb = new Vec ("chleb", false,true,false,"/zdroje/chleb.jpg");
   
          
         
@@ -113,7 +113,7 @@ public class HerniPlan implements Subject{
         
       zoo.vlozVec(lavicka);
       
-        mesto.vlozVec(kos);
+ //       mesto.vlozVec(kos);
          mesto.vlozVec(strom);
          mesto.vlozVec(sacek);
          mesto.vlozVec(jablko);
