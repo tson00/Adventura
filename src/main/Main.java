@@ -9,6 +9,7 @@ import GUI.Mapa;
 import GUI.MenuLista;
 import GUI.PanelBatohu;
 import GUI.PanelSchovat;
+import GUI.PanelSeber;
 import GUI.PanelVeci;
 import GUI.Vychody;
 import javafx.application.Application;
@@ -118,7 +119,13 @@ public class Main extends Application {
         lBatoh.setFont(Font.font("Arial", FontWeight.BOLD, 16));      
         
           Label lSchovat = new Label("Musis se schovat");
-        lSchovat.setFont(Font.font("Arial", FontWeight.BOLD, 16));   
+        lSchovat.setFont(Font.font("Arial", FontWeight.BOLD, 16)); 
+        
+        
+             Label lSeber = new Label("Mužeš tohle sebrat");
+        lSeber.setFont(Font.font("Arial", FontWeight.BOLD, 16)); 
+        
+        
 
         BorderPane levy = new BorderPane();
         BorderPane pravy= new BorderPane();
@@ -128,23 +135,26 @@ public class Main extends Application {
         FlowPane l2 = new FlowPane();
                 FlowPane l3 = new FlowPane();
                 FlowPane l4 = new FlowPane();
+                 FlowPane l5 = new FlowPane();
                 
        l1.setPrefWidth(50);
         l1.setPrefHeight(50);
-           l2.setPrefWidth(100);
-           l3.setPrefWidth(100);
-                     l4.setPrefWidth(100);
-           
+           l2.setPrefWidth(50);
+           l3.setPrefWidth(50);
+                     l4.setPrefWidth(50);
+            l5.setPrefWidth(50);
            
                Vychody vychody = new Vychody(hra.getHerniPlan(),centralText,zadejPrikazTextArea);
       PanelVeci panelVeci = new PanelVeci(hra.getHerniPlan(),centralText);  
          PanelBatohu panelBatohu = new PanelBatohu(hra.getHerniPlan(),centralText);
              PanelSchovat panelSchovat = new PanelSchovat(hra.getHerniPlan(),centralText);
+                  PanelSeber panelSeber = new PanelSeber(hra.getHerniPlan(),centralText);
          
         l1.getChildren().addAll(lVychod,vychody.getList());
         l2.getChildren().addAll(lVeci,panelVeci.getList());
        l3.getChildren().addAll(lBatoh,panelBatohu.getList());
         l4.getChildren().addAll(lSchovat,panelSchovat.getList());
+          l5.getChildren().addAll(lSeber,panelSeber.getList());
    
         
         
@@ -154,6 +164,8 @@ public class Main extends Application {
                 levy.setLeft(l2);
                 pravy.setLeft(l3);
                  pravy.setRight(l4);
+                 pravy.setCenter(l5);
+                 
                 
               
            

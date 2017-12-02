@@ -94,14 +94,14 @@ public class HerniPlan implements Subject{
         Vec banan1 =  new Vec("banan1",true,true,false,"/zdroje/banan1.jpg");
           Vec banan2 =  new Vec("banan2",true,true,false,"/zdroje/banan2.jpg");
           Vec banan3 = new Vec("banan3",true,true,false,"/zdroje/banan3.jpg");
-        Vec kokos = new Vec ("kokos", false,true,false,"/zdroje/kokos.jpeg");
-         Vec jablko = new Vec ("jablko", false,true,false,"/zdroje/jablko.jpg");
-         Vec houska = new Vec ("houska", false,true,false,"/zdroje/houska.jpg");
-       Vec ananas = new Vec ("ananas", false,true,false,"/zdroje/ananas.jpg");
-        Vec jahoda = new Vec ("jahoda", false,true,false,"/zdroje/jahoda.jpg");
-        Vec paprika = new Vec ("paprika", false,true,false,"/zdroje/paprika.jpg");
-      Vec salat = new Vec ("salat", false,true,false,"/zdroje/salat.jpg");
-       Vec chleb = new Vec ("chleb", false,true,false,"/zdroje/chleb.jpg");
+        Vec kokos = new Vec ("kokos", true,true,false,"/zdroje/kokos.jpeg");
+         Vec jablko = new Vec ("jablko", true,true,false,"/zdroje/jablko.jpg");
+         Vec houska = new Vec ("houska", true,true,false,"/zdroje/houska.jpg");
+       Vec ananas = new Vec ("ananas", true,true,false,"/zdroje/ananas.jpg");
+        Vec jahoda = new Vec ("jahoda", true,true,false,"/zdroje/jahoda.jpg");
+        Vec paprika = new Vec ("paprika", true,true,false,"/zdroje/paprika.jpg");
+      Vec salat = new Vec ("salat", true,true,false,"/zdroje/salat.jpg");
+       Vec chleb = new Vec ("chleb", true,true,false,"/zdroje/chleb.jpg");
   
          
         

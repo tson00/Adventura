@@ -27,7 +27,7 @@ import utils.Observer;
  */
 
 
-public class PanelSchovat implements Observer{
+public class PanelSeber implements Observer{
     
     private HerniPlan plan;
     ListView<Object> list;
@@ -41,7 +41,7 @@ public class PanelSchovat implements Observer{
      */
     
     
-    public PanelSchovat(HerniPlan plan, TextArea text) {
+    public PanelSeber(HerniPlan plan, TextArea text) {
        this.plan = plan;
        plan.registerObserver(this);
        
@@ -84,7 +84,7 @@ public class PanelSchovat implements Observer{
                            
                          
                            
-                           if(seznam.get(x).jePrenositelna()==false)
+                           if(seznam.get(x).jePrenositelna())
                            {
                            
                            
@@ -96,8 +96,8 @@ public class PanelSchovat implements Observer{
                        pomocna++;
                     }
                   
-                    String vstupniPrikaz = "schovat "+nazev;
-                    String odpovedHry = plan.getHra().zpracujPrikaz("schovat "+nazev);
+                    String vstupniPrikaz = "seber "+nazev;
+                    String odpovedHry = plan.getHra().zpracujPrikaz("seber "+nazev);
 
                 
                     centralText.appendText("\n" + vstupniPrikaz + "\n");
@@ -135,7 +135,7 @@ public class PanelSchovat implements Observer{
         {
         Vec pomocna = seznam.get(x);
      
-        if(pomocna.jePrenositelna()== false){
+        if(pomocna.jePrenositelna()){
         ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 100, 100, false, false));
         data.add(obrazek);
         

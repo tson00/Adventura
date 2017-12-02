@@ -54,6 +54,9 @@ public class Vec
     public boolean jePrenositelna(){
         return prenositelnost;
     }
+    
+    
+     
 /**
  * overuje zda je to jidlo
  * return je jidlo
@@ -69,6 +72,10 @@ public class Vec
         return schovatse;
     }
 
+    
+    
+    
+    
     //== Soukromé metody (instancí i třídy) ========================================
 
     /**
