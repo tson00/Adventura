@@ -8,6 +8,7 @@ package main;
 import GUI.Mapa;
 import GUI.MenuLista;
 import GUI.PanelBatohu;
+import GUI.PanelSchovat;
 import GUI.PanelVeci;
 import GUI.Vychody;
 import javafx.application.Application;
@@ -16,6 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -108,11 +111,14 @@ public class Main extends Application {
         Label lVychod = new Label("Východy");
         lVychod.setFont(Font.font("Arial", FontWeight.BOLD, 16));  
         
-        Label lVeci = new Label("Věci v místnosti");
+        Label lVeci = new Label("Jidlo v místnosti");
         lVeci.setFont(Font.font("Arial", FontWeight.BOLD, 16));   
         
         Label lBatoh = new Label("Batoh");
         lBatoh.setFont(Font.font("Arial", FontWeight.BOLD, 16));      
+        
+          Label lSchovat = new Label("Musis se schovat");
+        lSchovat.setFont(Font.font("Arial", FontWeight.BOLD, 16));   
 
         BorderPane levy = new BorderPane();
         BorderPane pravy= new BorderPane();
@@ -121,31 +127,41 @@ public class Main extends Application {
                  
         FlowPane l2 = new FlowPane();
                 FlowPane l3 = new FlowPane();
+                FlowPane l4 = new FlowPane();
                 
        l1.setPrefWidth(50);
         l1.setPrefHeight(50);
            l2.setPrefWidth(100);
            l3.setPrefWidth(100);
+                     l4.setPrefWidth(100);
            
            
                Vychody vychody = new Vychody(hra.getHerniPlan(),centralText,zadejPrikazTextArea);
       PanelVeci panelVeci = new PanelVeci(hra.getHerniPlan(),centralText);  
          PanelBatohu panelBatohu = new PanelBatohu(hra.getHerniPlan(),centralText);
+             PanelSchovat panelSchovat = new PanelSchovat(hra.getHerniPlan(),centralText);
          
         l1.getChildren().addAll(lVychod,vychody.getList());
         l2.getChildren().addAll(lVeci,panelVeci.getList());
-           l3.getChildren().addAll(lBatoh,panelBatohu.getList());
+       l3.getChildren().addAll(lBatoh,panelBatohu.getList());
+        l4.getChildren().addAll(lSchovat,panelSchovat.getList());
+   
+        
+        
+          
                 levy.setTop(mapa);
                 levy.setRight(l1);
-                pravy.setLeft(l2);
-                pravy.setCenter(l3);
-                        
+                levy.setLeft(l2);
+                pravy.setLeft(l3);
+                 pravy.setRight(l4);
+                
               
            
         
      borderPane.setLeft(levy);
      borderPane.setRight(pravy);
-        // borderPane.setRight(aktualniVeci);
+     
+   
 
     }
 

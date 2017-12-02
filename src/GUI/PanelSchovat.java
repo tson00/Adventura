@@ -27,7 +27,7 @@ import utils.Observer;
  */
 
 
-public class PanelVeci implements Observer{
+public class PanelSchovat implements Observer{
     
     private HerniPlan plan;
     ListView<Object> list;
@@ -41,7 +41,7 @@ public class PanelVeci implements Observer{
      */
     
     
-    public PanelVeci(HerniPlan plan, TextArea text) {
+    public PanelSchovat(HerniPlan plan, TextArea text) {
        this.plan = plan;
        plan.registerObserver(this);
        
@@ -81,7 +81,10 @@ public class PanelVeci implements Observer{
                     {
                        if(pomocna == index)
                        {
-                             if(seznam.get(x).jeJeJidlo())
+                           
+                         
+                           
+                           if(seznam.get(x).jeSchovatse())
                            {
                            
                            
@@ -89,13 +92,12 @@ public class PanelVeci implements Observer{
                            }
                            else
                            {pomocna--;}
-                           
                        }
                        pomocna++;
                     }
-                    
-                    String vstupniPrikaz = "snist "+nazev;
-                    String odpovedHry = plan.getHra().zpracujPrikaz("snist "+nazev);
+                  
+                    String vstupniPrikaz = "schovat "+nazev;
+                    String odpovedHry = plan.getHra().zpracujPrikaz("schovat "+nazev);
 
                 
                     centralText.appendText("\n" + vstupniPrikaz + "\n");
@@ -132,13 +134,14 @@ public class PanelVeci implements Observer{
         for (String x : seznam.keySet()) 
         {
         Vec pomocna = seznam.get(x);
-        
-        if(pomocna.jeJeJidlo()){
+     
+        if(pomocna.jeSchovatse()){
         ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 100, 100, false, false));
         data.add(obrazek);
         
         
         }
+     
         
         }
     }
