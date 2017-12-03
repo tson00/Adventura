@@ -11,7 +11,7 @@ import GUI.PanelBatohu;
 import GUI.PanelSchovat;
 import GUI.PanelSeber;
 import GUI.PanelVeci;
-import GUI.Vychody;
+import GUI.PanelVychody;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
@@ -95,8 +96,8 @@ public class Main extends Application {
         borderPane.setTop(menuLista);
       
         
-      Scene scene = new Scene(borderPane, 1000, 700);
-
+      Scene scene = new Scene(borderPane, 1000, 500);
+      
         primaryStage.setTitle("Adventura");
 
         primaryStage.setScene(scene);
@@ -109,21 +110,22 @@ public class Main extends Application {
         getCentralText().setEditable(false);
         borderPane.setCenter(getCentralText());
                
-        Label lVychod = new Label("Východy");
-        lVychod.setFont(Font.font("Arial", FontWeight.BOLD, 16));  
+        Label lVychod = new Label("Východy:");
+        lVychod.setFont(Font.font("Arial", FontWeight.BOLD, 15));  
         
-        Label lVeci = new Label("Jidlo v místnosti");
-        lVeci.setFont(Font.font("Arial", FontWeight.BOLD, 16));   
+        Label lVeci = new Label("\n "+"Najez v káždém prostoru!");
+        lVeci.setFont(Font.font("Arial", FontWeight.BOLD, 15));   
         
-        Label lBatoh = new Label("Batoh");
-        lBatoh.setFont(Font.font("Arial", FontWeight.BOLD, 16));      
+        Label lBatoh = new Label("\n"+"Batoh:");
+        lBatoh.setFont(Font.font("Arial", FontWeight.BOLD, 15));  
+       
         
-          Label lSchovat = new Label("Musis se schovat");
-        lSchovat.setFont(Font.font("Arial", FontWeight.BOLD, 16)); 
+          Label lSchovat = new Label("Musis se schovat!");
+        lSchovat.setFont(Font.font("Arial", FontWeight.BOLD, 15)); 
         
         
-             Label lSeber = new Label("Mužeš tohle sebrat");
-        lSeber.setFont(Font.font("Arial", FontWeight.BOLD, 16)); 
+             Label lSeber = new Label("Mužeš tohle sebrat:");
+        lSeber.setFont(Font.font("Arial", FontWeight.BOLD, 15)); 
         
         
 
@@ -137,18 +139,20 @@ public class Main extends Application {
                 FlowPane l4 = new FlowPane();
                  FlowPane l5 = new FlowPane();
                 
-       l1.setPrefWidth(50);
-        l1.setPrefHeight(50);
-           l2.setPrefWidth(50);
-           l3.setPrefWidth(50);
-                     l4.setPrefWidth(50);
-            l5.setPrefWidth(50);
+
+      
            
-               Vychody vychody = new Vychody(hra.getHerniPlan(),centralText,zadejPrikazTextArea);
+               PanelVychody vychody = new PanelVychody(hra.getHerniPlan(),centralText,zadejPrikazTextArea);
       PanelVeci panelVeci = new PanelVeci(hra.getHerniPlan(),centralText);  
          PanelBatohu panelBatohu = new PanelBatohu(hra.getHerniPlan(),centralText);
              PanelSchovat panelSchovat = new PanelSchovat(hra.getHerniPlan(),centralText);
                   PanelSeber panelSeber = new PanelSeber(hra.getHerniPlan(),centralText);
+                    
+               l1.setPrefWidth(10);
+                                l2.setPrefWidth(10);
+                                                l3.setPrefWidth(10);
+                                                                l4.setPrefWidth(10);
+                                                                                l5.setPrefWidth(10);
          
         l1.getChildren().addAll(lVychod,vychody.getList());
         l2.getChildren().addAll(lVeci,panelVeci.getList());
@@ -157,14 +161,14 @@ public class Main extends Application {
           l5.getChildren().addAll(lSeber,panelSeber.getList());
    
         
-        
+       
           
                 levy.setTop(mapa);
-                levy.setRight(l1);
+                levy.setRight(l4);
                 levy.setLeft(l2);
-                pravy.setLeft(l3);
-                 pravy.setRight(l4);
-                 pravy.setCenter(l5);
+                pravy.setTop(l1);
+                 pravy.setLeft(l5);
+                 pravy.setRight(l3);
                  
                 
               

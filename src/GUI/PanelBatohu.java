@@ -53,7 +53,7 @@ public class PanelBatohu implements Observer{
         list = new ListView<>();
         data = FXCollections.observableArrayList();
         list.setItems(data);
-        list.setPrefWidth(200);
+        list.setPrefSize(100, 200);
         
         list.setOnMouseClicked(new EventHandler<MouseEvent>() 
         {
@@ -74,8 +74,14 @@ public class PanelBatohu implements Observer{
                        if(pomocna == index)
                        {
                            nazev = x;
+                       
+                       
                        }
+                      
                        pomocna++;
+                    
+                       
+                       
                     }
                     
                     String vstupniPrikaz = "vyhodit "+nazev;
@@ -114,7 +120,7 @@ public class PanelBatohu implements Observer{
         for (String x : seznam.keySet()) 
         {
         Vec pomocna = seznam.get(x);
-        ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 100, 100, false, false));
+        ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 60, 60, false, false));
         data.add(obrazek);
         }
     }

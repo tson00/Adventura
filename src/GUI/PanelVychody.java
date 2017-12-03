@@ -22,7 +22,7 @@ import utils.Observer;
  * @author Tsoy Nadezhda
  */
 
-public class Vychody implements Observer
+public class PanelVychody implements Observer
 {
 
     private HerniPlan plan;
@@ -39,7 +39,7 @@ public class Vychody implements Observer
      * @param plan herní plán
      */
     
-    public Vychody(HerniPlan plan, TextArea text,TextField field)
+   public PanelVychody(HerniPlan plan, TextArea text,TextField field)
       {
         this.plan = plan;
         plan.registerObserver(this);
@@ -59,7 +59,7 @@ public class Vychody implements Observer
         list = new ListView<>();
         data = FXCollections.observableArrayList();
         list.setItems(data);
-        list.setPrefWidth(100);
+        list.setPrefSize(100, 100);
         
         list.setOnMouseClicked(new EventHandler<MouseEvent>() 
         {

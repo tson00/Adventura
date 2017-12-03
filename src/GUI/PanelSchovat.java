@@ -60,7 +60,7 @@ public class PanelSchovat implements Observer{
         list = new ListView<>();
         data = FXCollections.observableArrayList();
        list.setItems(data);
-        list.setPrefWidth(200);
+        list.setPrefSize(100, 200);
         
         
         list.setOnMouseClicked(new EventHandler<MouseEvent>() 
@@ -136,7 +136,7 @@ public class PanelSchovat implements Observer{
         Vec pomocna = seznam.get(x);
      
         if(pomocna.jePrenositelna()== false){
-        ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 100, 100, false, false));
+        ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 60, 60, false, false));
         data.add(obrazek);
         
         

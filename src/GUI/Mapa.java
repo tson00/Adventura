@@ -13,9 +13,11 @@ import logika.IHra;
 import main.Main;
 import utils.Observer;
 
-/**
+/*******************************************************************************
+ * Instance třídy Mapa po ktere jde tečka
  *
- * @author Tsoy Nadezhda
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 public class Mapa extends AnchorPane implements Observer {
   public IHra hra;

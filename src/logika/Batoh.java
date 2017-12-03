@@ -2,18 +2,17 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package logika;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /*******************************************************************************
  * Instance třídy batoh představují misto kam muzete ukladat veci
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class Batoh
 {
     //== Datové atributy (statické i instancí)======================================
-private static final int KAPACITA = 3;
+private static final int KAPACITA = 10;
 private Map<String, Vec> veci;
 
 
