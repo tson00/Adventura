@@ -87,7 +87,7 @@ public class HerniPlan implements Subject{
         // Vec kos = new Vec("kos", false,false,false);
           Vec strom = new Vec("strom", false,false,true,"/zdroje/strom.jpg");
            Vec dira = new Vec("dira", false,false,true,"/zdroje/dira.jpg");
-            Vec krovi = new Vec("krovi", false,false,false,"/zdroje/krovi.jpg");
+            Vec krovi = new Vec("krovi", false,false,true,"/zdroje/krovi.jpg");
              Vec palma = new Vec("palma", false,false,true,"/zdroje/palma.jpg");
           Vec sacek = new Vec("sacek",true,false,false,"/zdroje/sacek.jpg");
        
