@@ -12,23 +12,27 @@ import GUI.PanelSchovat;
 import GUI.PanelSeber;
 import GUI.PanelVeci;
 import GUI.PanelVychody;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import logika.*;
 import uiText.TextoveRozhrani;
@@ -50,11 +54,77 @@ public class Main extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws InterruptedException {
         this.stage=primaryStage;
         setHra(new Hra()); //smazat IHra smazano
       mapa =new Mapa(hra);
       menuLista=new MenuLista(this);
+   
+ //  FlowPane root = new FlowPane();
+     //   root.setPadding(new Insets(10));
+  //  root.setHgap(1);
+   
+   //  root.setPadding(new Insets(200, 10, 10, 100)); //margins around the whole grid
+                                             //(top/right/bottom/left)
+    //    root.getChildren().addAll(progressBar, progressIndicator);
+
+  
+
+
+  ProgressBar progressBar= new ProgressBar();
+   
+    ProgressIndicator progressIndicator= new ProgressIndicator();
+   
+   
+    // progressBar.setProgress(0F);
+
+  
+    
+   
+              
+    
+             Button buttonHra=new Button("new Game");   
+                Button buttonKonecHry=new Button("Exit");
+                BorderPane borderPane1=new BorderPane();
+    
+   
+      FlowPane progress = new FlowPane();
+      
+        progress.setAlignment(Pos.CENTER);
+        progress.getChildren().addAll(progressBar, progressIndicator,buttonHra,buttonKonecHry);
+        borderPane1.setCenter(progress);
+        borderPane1.setLeft(buttonHra);
+        borderPane1.setRight(buttonKonecHry);
+        buttonHra.setPrefSize(100, 500);
+        buttonKonecHry.setPrefSize(100, 500);
+        buttonHra.setVisible(false);
+        
+        
+        PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(5.5));
+delay.setOnFinished( event -> buttonHra.setVisible(true));
+delay.play();
+
+PauseTransition delay1 = new PauseTransition(javafx.util.Duration.seconds(5));
+delay1.setOnFinished( event -> progressBar.setVisible(false));
+delay1.play();
+
+PauseTransition delay3 = new PauseTransition(javafx.util.Duration.seconds(5));
+delay3.setOnFinished( event -> progressIndicator.setVisible(false));
+delay3.play();
+
+        
+       
+        
+    Scene sceneProgress=new Scene(borderPane1,500,100);
+    Stage progressStage=new Stage();
+    progressStage.setTitle("Progress");
+    progressStage.setScene(sceneProgress);
+    progressStage.show();
+
+ //PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(3));
+//delay.setOnFinished( event -> progressStage.close() );
+//delay.play();
+
     
         BorderPane borderPane = new BorderPane();
         
@@ -101,7 +171,30 @@ public class Main extends Application {
         primaryStage.setTitle("Adventura");
 
         primaryStage.setScene(scene);
-        primaryStage.show();
+        
+    
+ 
+ // primaryStage.show();
+buttonHra.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                        primaryStage.show();
+                        progressStage.close();
+            
+            
+            }
+        });
+        
+ buttonKonecHry.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                        System.exit(0);
+            
+            
+            }
+        });
+    
+    
         zadejPrikazTextArea.requestFocus();//nemusim klikat na text
         
         centralText = new TextArea();//smazat TextArea
@@ -177,7 +270,7 @@ public class Main extends Application {
      borderPane.setLeft(levy);
      borderPane.setRight(pravy);
      
-   
+ 
 
     }
 
@@ -227,7 +320,7 @@ public class Main extends Application {
     public Stage getStage() {
         return stage;
     }
-      public void novaHra() {
+      public void novaHra() throws InterruptedException {
         start(stage);
     }
     

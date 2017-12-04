@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -91,7 +93,12 @@ private Main main;
 
             @Override
             public void handle(ActionEvent event) {
-                main.novaHra();
+                try {
+                    main.novaHra();
+                    main.getStage().close();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MenuLista.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
