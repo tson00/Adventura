@@ -5,7 +5,7 @@ package logika;
  *  Toto rozhraní je součástí jednoduché textové hry.
  *  
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  *  
  */
 interface IPrikaz {

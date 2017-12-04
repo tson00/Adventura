@@ -3,34 +3,36 @@
 package logika;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /*******************************************************************************
  * Instance třídy Postava představují popis postavy
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class Postava
 {
     //== Datové atributy (statické i instancí)======================================
-private String jmeno;
-private String proslov;
+private final String jmeno;
+private final String proslov;
 private Prostor aktualniProstor;
-private List<Prostor> prostory;
+private final List<Prostor> prostory;
 
 //private Prostor aktualniProstor;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....
+     * @param jmeno
+     * @param proslov
+     * @param pocatecni
      */
     public Postava(String jmeno,String proslov,Prostor pocatecni)
     {
         this.jmeno=jmeno;
         this.proslov=proslov;
       aktualniProstor=pocatecni;
-      prostory=new ArrayList<Prostor>();
+      prostory=new ArrayList<>();
         
        
     }
@@ -61,12 +63,14 @@ public Prostor getAktualniProstor() {
     }
     /**
      * nastavi prostor
+     * @param prostor
      */
 public void setAktualniProstor(Prostor prostor){
 aktualniProstor=prostor;
 }
 /**
  * prida prostor 
+     * @param dalsiProstory
  */
 public void pridejProstory(Prostor...dalsiProstory){
 prostory.addAll(Arrays.asList(dalsiProstory));

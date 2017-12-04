@@ -6,13 +6,13 @@ package logika;
  * Instance třídy PrikazSeber sebere do batohu
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class PrikazSeber implements IPrikaz
 {
     private static final String NAZEV = "seber";
-    private HerniPlan plan;
-    private Batoh batoh;
+    private final HerniPlan plan;
+    private final Batoh batoh;
     /**
     *  Konstruktor třídy
     *  

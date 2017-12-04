@@ -8,17 +8,18 @@ package logika;
  * Instance třídy PrikazSeznamVeci veci ktere mas v batohu
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class PrikazSeznamVeci implements IPrikaz
 {
     //== Datové atributy (statické i instancí)======================================
  private static final String NAZEV = "seznam";
-    private HerniPlan plan;
+    private final HerniPlan plan;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....
+     * @param plan
      */
     public PrikazSeznamVeci(HerniPlan plan)
     {

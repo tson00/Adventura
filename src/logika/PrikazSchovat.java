@@ -2,27 +2,25 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package logika;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 /*******************************************************************************
  * Instance třídy PrikazSchovat. Schova se za vec pokud je to mozny
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class PrikazSchovat implements IPrikaz
 {
     //== Datové atributy (statické i instancí)======================================
 private static final String NAZEV = "schovat";
-    private HerniPlan plan;
+    private final HerniPlan plan;
 
-   private Prostor prostor;
+   private final Prostor prostor;
 
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....
+     * @param plan
      */
     public PrikazSchovat(HerniPlan plan)
     {

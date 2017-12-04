@@ -5,7 +5,7 @@ package logika;
  *  Tato třída je součástí jednoduché textové hry.
  * 
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  *  
  */
 
@@ -13,7 +13,7 @@ class PrikazKonec implements IPrikaz {
 
     private static final String NAZEV = "konec";
 
-    private Hra hra;
+    private final Hra hra;
 
     /**
      *  Konstruktor třídy

@@ -23,12 +23,21 @@ public class Mapa extends AnchorPane implements Observer {
   public IHra hra;
   private Circle tecka;
 
+  /****  
+  *
+  * @param hra
+  */
   public Mapa(IHra hra){
    
   this.hra=hra;
   hra.getHerniPlan().registerObserver(this);
   init();
   }    
+  
+  /**
+   * init
+   */
+  
   private void init(){
     
 
@@ -42,6 +51,10 @@ public class Mapa extends AnchorPane implements Observer {
        
   
   }
+  /***
+   * 
+   * @param novaHra 
+   */
   public void newGame(IHra novaHra){
       hra.getHerniPlan().removeObserver(this);
       hra=novaHra;
@@ -51,11 +64,15 @@ public class Mapa extends AnchorPane implements Observer {
   
   
   }
+  
+  /****
+   * update
+   */
 
     @Override
     public void update() {
-        this.setTopAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosTop());
-        this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosLeft());
+        Mapa.setTopAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosTop());
+        Mapa.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosLeft());
     
         
     }

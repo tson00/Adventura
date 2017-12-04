@@ -12,13 +12,10 @@ import GUI.PanelSchovat;
 import GUI.PanelSeber;
 import GUI.PanelVeci;
 import GUI.PanelVychody;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,15 +29,14 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import logika.*;
 import uiText.TextoveRozhrani;
 
 /**
  *
- * @author Tsoy Nadezhda
- * 
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  * 
  */
 public class Main extends Application {
@@ -52,21 +48,18 @@ public class Main extends Application {
     private MenuLista menuLista;
     private Stage stage;
 
-
+ /**
+     *  start
+     * @param primaryStage
+     * @throws java.lang.InterruptedException
+     */
     @Override
     public void start(Stage primaryStage) throws InterruptedException {
         this.stage=primaryStage;
-        setHra(new Hra()); //smazat IHra smazano
+        setHra(new Hra());
       mapa =new Mapa(hra);
       menuLista=new MenuLista(this);
-   
- //  FlowPane root = new FlowPane();
-     //   root.setPadding(new Insets(10));
-  //  root.setHgap(1);
-   
-   //  root.setPadding(new Insets(200, 10, 10, 100)); //margins around the whole grid
-                                             //(top/right/bottom/left)
-    //    root.getChildren().addAll(progressBar, progressIndicator);
+
 
   
 
@@ -76,13 +69,6 @@ public class Main extends Application {
     ProgressIndicator progressIndicator= new ProgressIndicator();
    
    
-    // progressBar.setProgress(0F);
-
-  
-    
-   
-              
-    
              Button buttonHra=new Button("new Game");   
                 Button buttonKonecHry=new Button("Exit");
                 BorderPane borderPane1=new BorderPane();
@@ -98,7 +84,8 @@ public class Main extends Application {
         buttonHra.setPrefSize(100, 500);
         buttonKonecHry.setPrefSize(100, 500);
         buttonHra.setVisible(false);
-        
+ 
+        //doba videlnosti
         
         PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(5.5));
 delay.setOnFinished( event -> buttonHra.setVisible(true));
@@ -121,9 +108,7 @@ delay3.play();
     progressStage.setScene(sceneProgress);
     progressStage.show();
 
- //PauseTransition delay = new PauseTransition(javafx.util.Duration.seconds(3));
-//delay.setOnFinished( event -> progressStage.close() );
-//delay.play();
+
 
     
         BorderPane borderPane = new BorderPane();
@@ -136,22 +121,28 @@ delay3.play();
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         
          zadejPrikazTextArea= new TextField("...");//smazzat TextField
-        zadejPrikazTextArea.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                String vstupniPrikaz = zadejPrikazTextArea.getText();//ulozim prikazy ze hry
-                String odpovedHry= hra.zpracujPrikaz(vstupniPrikaz);
-                getCentralText().appendText("\n"+vstupniPrikaz + "\n");
-                getCentralText().appendText("\n"+odpovedHry + "\n");
-                zadejPrikazTextArea.setText("");
-                if (hra.konecHry())
-                {
+         
+         
+          /**
+     *  action event
+     * 
+     */
+        zadejPrikazTextArea.setOnAction((ActionEvent event) -> {
+            String vstupniPrikaz = zadejPrikazTextArea.getText();//ulozim prikazy ze hry
+            String odpovedHry= hra.zpracujPrikaz(vstupniPrikaz);
+            getCentralText().appendText("\n"+vstupniPrikaz + "\n");
+            getCentralText().appendText("\n"+odpovedHry + "\n");
+            zadejPrikazTextArea.setText("");
+            if (hra.konecHry())
+            {
                 zadejPrikazTextArea.setEditable(false);
-                  getCentralText().appendText(hra.vratEpilog());
-                    // System.exit(0);
-                }
-
-               
+                getCentralText().appendText(hra.vratEpilog());
+                
+                
+                
+                
+                
+                
             }
         });
         
@@ -173,25 +164,22 @@ delay3.play();
         primaryStage.setScene(scene);
         
     
+  /**
+     *  tlacitko Hra
+     * 
+     */
  
- // primaryStage.show();
-buttonHra.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                        primaryStage.show();
-                        progressStage.close();
-            
-            
-            }
+buttonHra.setOnAction((ActionEvent event) -> {
+    primaryStage.show();
+    progressStage.close();
         });
+ /**
+     *  tlacitko Konec Hry
+     * 
+     */
         
- buttonKonecHry.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                        System.exit(0);
-            
-            
-            }
+ buttonKonecHry.setOnAction((ActionEvent event) -> {
+     System.exit(0);
         });
     
     
@@ -273,6 +261,12 @@ buttonHra.setOnAction(new EventHandler<ActionEvent>() {
  
 
     }
+    
+     /**
+     *  get Mapa
+     * @return mapa
+     * 
+     */
 
     public Mapa getMapa() {
         return mapa;
@@ -282,6 +276,8 @@ buttonHra.setOnAction(new EventHandler<ActionEvent>() {
 
     /**
      * @param args the command line arguments
+     * udela hru 
+     * nastavi textove rozhrani
      */
     public static void main(String[] args) {
         if (args.length == 0) {
@@ -320,6 +316,14 @@ buttonHra.setOnAction(new EventHandler<ActionEvent>() {
     public Stage getStage() {
         return stage;
     }
+    
+    
+     /**
+     *  nova hra
+     * 
+     * 
+     * @throws java.lang.InterruptedException
+     */
       public void novaHra() throws InterruptedException {
         start(stage);
     }

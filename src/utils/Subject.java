@@ -6,8 +6,11 @@
 package utils;
 
 /**
- *
- * @author acer
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
+ * register remove notify observer
+ * 
+ * 
  */
 public interface Subject {
     void registerObserver(Observer observer);

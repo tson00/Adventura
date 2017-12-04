@@ -1,7 +1,6 @@
 package logika;
 
 import java.util.*;
-import java.util.stream.Collectors;
 import utils.Subject;
 import utils.Observer;
 /**
@@ -13,21 +12,21 @@ import utils.Observer;
  *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  * //herni plan je Subject
  */
 public class HerniPlan implements Subject{
     
     private Prostor aktualniProstor;
     private Prostor vyherniProstor;
-    private Batoh batoh;
+    private final Batoh batoh;
     private boolean najezena=true;
     private boolean schovana=true;
-    private Hra hra;
+    private final Hra hra;
     private Prostor prostor;
     private Map<String,Postava> seznamPostav;
     private Postava postava;
-    private List<Observer> listObserveru=new ArrayList<Observer>();
+    private final List<Observer> listObserveru=new ArrayList<>();
     
 
      /**
@@ -76,7 +75,7 @@ public class HerniPlan implements Subject{
            lovec3.pridejProstory(zoo);
              lovec4.pridejProstory(lod);
        
-       seznamPostav = new HashMap<String,Postava>();
+       seznamPostav = new HashMap<>();
       
         seznamPostav.put(lovec1.getJmeno(),lovec1);
              seznamPostav.put(lovec2.getJmeno(),lovec2);
@@ -113,7 +112,7 @@ public class HerniPlan implements Subject{
         
       zoo.vlozVec(lavicka);
       
- //       mesto.vlozVec(kos);
+
          mesto.vlozVec(strom);
          mesto.vlozVec(sacek);
          mesto.vlozVec(jablko);
@@ -165,7 +164,7 @@ public class HerniPlan implements Subject{
     
     /**
      *  Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
-     *
+     * notify observers
      *@param  prostor nový aktuální prostor
      */
     public void setAktualniProstor(Prostor prostor) {
@@ -175,7 +174,7 @@ public class HerniPlan implements Subject{
     }
       /**
      *  Metoda jeVyhra
-     *
+     *@return aktualniProstor vyherniProstor
      *
      */
     
@@ -193,7 +192,7 @@ public class HerniPlan implements Subject{
       /**
      *  Metoda najez se
      *
-     *
+     *nastavi true
      */
     public void najezSe(){
     this.najezena=true;
@@ -202,7 +201,7 @@ public class HerniPlan implements Subject{
     
       /**
      *  Metoda hlad
-     *
+     *nastavi false
      *
      */
     public void hlad(){
@@ -212,14 +211,14 @@ public class HerniPlan implements Subject{
       /**
      *  Metoda najezena
      *
-     *
+     *@return najezena
      */
    public boolean getNajezena(){
     return this.najezena;
     }
       /**
      *  Metoda schovana
-     *
+     *schovana true
      *
      */
    public void schovana(){
@@ -227,7 +226,7 @@ public class HerniPlan implements Subject{
     }
       /**
      *  Metoda nechovana
-     *
+     *necshovana false
      *
      */
     public void neschovana(){
@@ -266,11 +265,7 @@ public class HerniPlan implements Subject{
      */
     public String popisPostavVProstoru() {
         String vysledek = "";
-        for (Postava postava : seznamPostav.values()) {
-            if (postava.getAktualniProstor() == aktualniProstor) {
-                vysledek += " " + postava.getJmeno()+postava.getProslov();
-            }
-        }
+        vysledek = seznamPostav.values().stream().filter((P) -> (P.getAktualniProstor() == aktualniProstor)).map((p) -> " " + p.getJmeno()+p.getProslov()).reduce(vysledek, String::concat);
         if (vysledek.length() == 0) {
             vysledek = "Ve prostoru nikdo není";
         }
@@ -282,7 +277,7 @@ public class HerniPlan implements Subject{
       /**
      * Metoda popis
      *
-     *@return popis
+     *@return popisPostavVProstoru
      */
     public String popis(){
     
@@ -300,8 +295,9 @@ public class HerniPlan implements Subject{
     }
       /**
      *  Metoda vrací postavu
-     *  @return null
-     *  @return postavu
+     * @param jmeno
+     *  @return null postava
+     * 
      *
      *
      */
@@ -315,31 +311,46 @@ public class HerniPlan implements Subject{
     }
       /**
      *  Metoda přesunu postavy
-     *
+     *presun postavy
      *
      */
     public void presunPostavy() {
-        for (Postava postava : seznamPostav.values()) {
-            postava.prejdi();
-        }
+        seznamPostav.values().forEach((p) -> {
+            p.prejdi();
+        });
     }
-
+   /**
+     *  
+     *register observer
+     *
+     * @param observer
+     */
     @Override
+   
     public void registerObserver(utils.Observer observer) {
         listObserveru.add(observer);
     }
-
+   /**
+     *  
+     *removeObserver
+     *
+     * @param observer
+     */
     @Override
+   
     public void removeObserver(utils.Observer observer) {
        listObserveru.remove(observer);
                }
-
+      /**
+     *notify Observer
+     *
+     */
     @Override
+
     public void notifyObservers() {
-        for (Observer listObserveruItem  : listObserveru) {
+        listObserveru.forEach((listObserveruItem) -> {
             listObserveruItem.update();
-            
-        }
+        });
       
     }
   

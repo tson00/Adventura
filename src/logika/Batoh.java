@@ -12,8 +12,8 @@ import java.util.*;
 public class Batoh
 {
     //== Datové atributy (statické i instancí)======================================
-private static final int KAPACITA = 10;
-private Map<String, Vec> veci;
+private static final int KAPACITA = 20;
+private final Map<String, Vec> veci;
 
 
 
@@ -24,7 +24,7 @@ private Map<String, Vec> veci;
      */
     public Batoh()
     {
-        veci = new HashMap<String, Vec>();
+        veci = new HashMap<>();
      
         
         
@@ -35,10 +35,7 @@ private Map<String, Vec> veci;
      * @return true false
      */
     public boolean vejdeSeVec () {   
-        if (( veci.size() < KAPACITA ) ){
-            return true;
-        }
-        return false;
+        return ( veci.size() < KAPACITA );
     }
     /**
      * vlozit vec v batoh
@@ -73,18 +70,14 @@ public String nazvyVeci () {
         if (veci.isEmpty()){
             return nazvy + "nic nemáš v batohu";
         }
-        for (String nazevVeci : veci.keySet()){
-
-            nazvy += nazevVeci + " " ;
-        }
+        nazvy = veci.keySet().stream().map((nazevVeci) -> nazevVeci + " ").reduce(nazvy, String::concat);
         if (zbyva > 0){
         return nazvy + "\n---> můžeš sebrat ještě " + zbyva + " vec(i)";}
         return nazvy + "\n---> batoh už je plný, chceš-li něco přidat, budeš muset vyhodit jinou věc!!";
     }
     /**
      * vyber vec
-     * @return nalezena vec
-     * @return null
+     * @return nalezena vec null
      * @param nazev
      */
        public Vec vyberVec (String nazev) {
@@ -110,6 +103,11 @@ public boolean jeTamVec (String nazev) {
         return veci.containsKey(nazev);
 
     }
+    /**
+     * get Veci
+     * @return veci
+     * 
+     */
     public Map<String, Vec> getVeci() {
         return veci;
     }

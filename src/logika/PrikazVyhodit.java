@@ -8,7 +8,7 @@ package logika;
  * Instance třídy PrikazVyhodit vyhodi vec do aktualniho prostoru
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class PrikazVyhodit implements IPrikaz
 {
@@ -21,6 +21,8 @@ public HerniPlan plan;
 
     /***************************************************************************
      *  Konstruktor ....
+     * @param batoh
+     * @param plan
      */
     public PrikazVyhodit(Batoh batoh, HerniPlan plan)
     {

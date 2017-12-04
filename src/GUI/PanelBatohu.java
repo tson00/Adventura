@@ -8,7 +8,6 @@ package GUI;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -20,8 +19,8 @@ import utils.Observer;
 
 /**
  * Panel zobrazí obsah batohu hráče 
- *
- * @author Tsoy Nadezhda
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 public class PanelBatohu implements Observer{
     
@@ -29,12 +28,14 @@ public class PanelBatohu implements Observer{
     ListView<Object> list;
     ObservableList<Object> data;
     
-    private TextArea centralText;
+    private final TextArea centralText;
 
     /**
-     * konstruktur
+     * konstruktor
      *
      * @param plan
+     * @param text
+     * 
      */
     
     public PanelBatohu(HerniPlan plan,TextArea text) {
@@ -55,44 +56,39 @@ public class PanelBatohu implements Observer{
         list.setItems(data);
         list.setPrefSize(100, 200);
         
-        list.setOnMouseClicked(new EventHandler<MouseEvent>() 
-        {
-            @Override
-            public void handle(MouseEvent click)
+        list.setOnMouseClicked((MouseEvent click) -> {
+            if (click.getClickCount() == 2)
             {
-                if (click.getClickCount() == 2) 
+                int index = list.getSelectionModel().getSelectedIndex(); 
+                
+                Map<String, Vec> seznam;
+                seznam = plan.getBatoh().getVeci();
+                
+                String nazev = "";
+                int pomocna = 0;
+                for (String x : seznam.keySet())
                 {
-                    int index = list.getSelectionModel().getSelectedIndex();
-                    
-                    Map<String, Vec> seznam;
-                    seznam = plan.getBatoh().getVeci();
-                    
-                    String nazev = "";
-                    int pomocna = 0;
-                    for (String x : seznam.keySet()) 
+                    if(pomocna == index)
                     {
-                       if(pomocna == index)
-                       {
-                           nazev = x;
-                       
-                       
-                       }
-                      
-                       pomocna++;
-                    
-                       
-                       
+                        nazev = x;
+                        
+                        
                     }
                     
-                    String vstupniPrikaz = "vyhodit "+nazev;
-                    String odpovedHry = plan.getHra().zpracujPrikaz("vyhodit "+nazev);
-
-                
-                    centralText.appendText("\n" + vstupniPrikaz + "\n");
-                    centralText.appendText("\n" + odpovedHry + "\n");
-               
-                    plan.notifyObservers();
+                    pomocna++;
+                    
+                    
+                    
                 }
+                
+                String vstupniPrikaz = "vyhodit "+nazev;
+                String odpovedHry = plan.getHra().zpracujPrikaz("vyhodit "+nazev);
+                
+                
+                centralText.appendText("\n" + vstupniPrikaz + "\n");
+                centralText.appendText("\n" + odpovedHry + "\n");
+                
+                plan.notifyObservers();
             }
         });
         
@@ -117,12 +113,9 @@ public class PanelBatohu implements Observer{
         Map<String, Vec> seznam;
         seznam = plan.getBatoh().getVeci();
         data.clear();
-        for (String x : seznam.keySet()) 
-        {
-        Vec pomocna = seznam.get(x);
-        ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 60, 60, false, false));
-        data.add(obrazek);
-        }
+        seznam.keySet().stream().map((x) -> seznam.get(x)).map((pomocna) -> new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 60, 60, false, false))).forEachOrdered((obrazek) -> {
+            data.add(obrazek);
+        });
     }
     
     /**

@@ -8,13 +8,13 @@ package logika;
  *  Vypisuje uvítací a ukončovací text hry.
  *  Také vyhodnocuje jednotlivé příkazy zadané uživatelem.
  *
- *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+  *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 
 public class Hra implements IHra {
-    private SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
-   private HerniPlan herniPlan;
+    private final SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
+   private final HerniPlan herniPlan;
     private boolean konecHry = false;
     public Batoh batoh;
     
@@ -46,6 +46,7 @@ public class Hra implements IHra {
      *  Vrátí úvodní zprávu pro hráče.
      *  @return text
      */
+    @Override
     public String vratUvitani() {
         return "Vítejte!\n" +
                "Toto je hra o opičce.\n" +
@@ -58,6 +59,7 @@ public class Hra implements IHra {
      *  Vrátí závěrečnou zprávu pro hráče.
      *  @return text
      */
+    @Override
     public String vratEpilog() {
         return "Dík, že jste si zahráli.  Ahoj.";
     }
@@ -66,6 +68,7 @@ public class Hra implements IHra {
      * Vrací true, pokud hra skončila.
      * @return konec
      */
+    @Override
      public boolean konecHry() {
         return konecHry;
     }
@@ -78,6 +81,7 @@ public class Hra implements IHra {
      *@param  radek  text, který zadal uživatel jako příkaz do hry.
      *@return          vrací se řetězec, který se má vypsat na obrazovku
      */
+    @Override
      public String zpracujPrikaz(String radek) {
         String [] slova = radek.split("[ \t]+");
         String slovoPrikazu = slova[0];
@@ -85,7 +89,7 @@ public class Hra implements IHra {
         for(int i=0 ;i<parametry.length;i++){
            	parametry[i]= slova[i+1];  	
         }
-        String textKVypsani=" .... ";
+        String textKVypsani="....";
         if (platnePrikazy.jePlatnyPrikaz(slovoPrikazu)) {
             IPrikaz prikaz = platnePrikazy.vratPrikaz(slovoPrikazu);
             textKVypsani = prikaz.provedPrikaz(parametry);
@@ -118,6 +122,7 @@ public class Hra implements IHra {
      *  
      *  @return     odkaz na herní plán
      */
+    @Override
      public HerniPlan getHerniPlan(){
         return herniPlan;
      }

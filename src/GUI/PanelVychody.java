@@ -7,7 +7,6 @@ package GUI;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -17,9 +16,9 @@ import utils.Observer;
 
 
 /**
- * Panel zobrazující list s východy uprostřed
- *
- * @author Tsoy Nadezhda
+ * Panel zobrazující list s východy 
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 
 public class PanelVychody implements Observer
@@ -29,14 +28,16 @@ public class PanelVychody implements Observer
     ListView<String> list;
     ObservableList<String> data;
     
-    private TextArea centralText;
-    private TextField zadejPrikazTextArea;
+    private final TextArea centralText;
+    private final TextField zadejPrikazTextArea;
 
      /**
      * Konstruktor, který inicializuje panel, zaregistruje ho jako pozorovatele
      * u herního plánu
      *
      * @param plan herní plán
+     * @param text
+     * @param field
      */
     
    public PanelVychody(HerniPlan plan, TextArea text,TextField field)
@@ -61,34 +62,32 @@ public class PanelVychody implements Observer
         list.setItems(data);
         list.setPrefSize(100, 100);
         
-        list.setOnMouseClicked(new EventHandler<MouseEvent>() 
-        {
-            @Override
-            public void handle(MouseEvent click)
+        list.setOnMouseClicked((MouseEvent click) -> {
+            if (click.getClickCount() == 2)
             {
-                if (click.getClickCount() == 2) 
-                {
-                    String vstupniPrikaz = "jdi "+list.getSelectionModel().getSelectedItem();
-                    String odpovedHry = plan.getHra().zpracujPrikaz("jdi "+list.getSelectionModel().getSelectedItem());
-
+                String vstupniPrikaz = "jdi "+list.getSelectionModel().getSelectedItem();
+                String odpovedHry = plan.getHra().zpracujPrikaz("jdi "+list.getSelectionModel().getSelectedItem());
+                
                 getCentralText().appendText("\n"+vstupniPrikaz + "\n");
                 getCentralText().appendText("\n"+odpovedHry + "\n");
-            //    zadejPrikazTextArea.setText("");
-                    
-                    if (plan.getHra().konecHry()) 
-                    {
+                //    zadejPrikazTextArea.setText("");
+                
+                if (plan.getHra().konecHry())
+                {
                     zadejPrikazTextArea.setEditable(false);
                     centralText.appendText(plan.getHra().vratEpilog());
-                    }
-                    
-                    
-                    plan.notifyObservers();
                 }
+                
+                
+                plan.notifyObservers();
             }
         });
         update();
       }
-
+/**
+ * 
+ * @return list
+ */
     public ListView<String> getList()
       {
         return list;
@@ -119,6 +118,12 @@ public class PanelVychody implements Observer
         this.update();
     }
 
+    
+    
+    /**
+     *@return centralText
+     
+     **/
    public TextArea getCentralText() {
         return centralText;
     }

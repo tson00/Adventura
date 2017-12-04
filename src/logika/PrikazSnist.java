@@ -6,14 +6,14 @@ package logika;
  * Instance třídy PrikazSnist sni jidlo a smaze z prostoru
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 public class PrikazSnist implements IPrikaz
 {
     private static final String NAZEV = "snist";
-     private HerniPlan plan;
+     private final HerniPlan plan;
 
-   private Prostor prostor;
+   private final Prostor prostor;
 
   
     /**

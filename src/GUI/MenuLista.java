@@ -8,7 +8,6 @@ package GUI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Menu;
@@ -22,17 +21,24 @@ import main.Main;
 
 
 /**
- *
- * @author Tsoy Nadezhda
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 public class MenuLista extends MenuBar{
     
-private Main main;
+private final Main main;
+
+/**
+ *@param main
+ ***/
     
     public MenuLista(Main main){
         this.main = main;
         init();
     }
+    /*
+    init
+    */
   private void init(){
         Menu menuSoubor = new Menu("Advenura");
         
@@ -53,52 +59,37 @@ private Main main;
         
         this.getMenus().addAll(menuSoubor, menuHelp);
         
-        itemOProgramu.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("O Adventure");
-                alert.setHeaderText("Toto je ma adventura");
-                alert.setContentText("Graficka verze adventury");
-                alert.initOwner(main.getStage());
-                alert.showAndWait();
-            }
+        itemOProgramu.setOnAction((ActionEvent event) -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("O Adventure");
+            alert.setHeaderText("Toto je ma adventura");
+            alert.setContentText("Graficka verze adventury");
+            alert.initOwner(main.getStage());
+            alert.showAndWait();
         });
         
-        itemNapoveda.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                Stage stage = new Stage();
-                stage.setTitle("Napoveda");
-                WebView webview = new WebView();
-                
-                webview.getEngine().load(Main.class.getResource("/zdroje/napoveda.html").toExternalForm());
-                
-                stage.setScene(new Scene(webview, 500, 500));
-                stage.show();
-            }
+        itemNapoveda.setOnAction((ActionEvent event) -> {
+            Stage stage = new Stage();
+            stage.setTitle("Napoveda");
+            WebView webview = new WebView();
+            
+            webview.getEngine().load(Main.class.getResource("/zdroje/napoveda.html").toExternalForm());
+            
+            stage.setScene(new Scene(webview, 500, 500));
+            stage.show();
         });
         
-        itemKonec.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                System.exit(0);
-            }
+        itemKonec.setOnAction((ActionEvent event) -> {
+            System.exit(0);
         });
         
-        itemNovaHra.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    main.novaHra();
-                    main.getStage().close();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(MenuLista.class.getName()).log(Level.SEVERE, null, ex);
-                }
+       
+        itemNovaHra.setOnAction((ActionEvent event) -> {
+            try {
+                main.novaHra();
+                main.getStage().close();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(MenuLista.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         

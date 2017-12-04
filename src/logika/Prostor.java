@@ -12,19 +12,19 @@ import java.util.stream.Collectors;
  * Prostor může mít sousední prostory připojené přes východy. Pro každý východ
  * si prostor ukládá odkaz na sousedící prostor.
  *
- * @author Tsoy Nadezhda
- * @version pro školní rok 2016/2017
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 public class Prostor {
 
-    private String nazev;
-    private String popis;
-    private Set<Prostor> vychody; 
+    private final String nazev;
+    private final String popis;
+    private final Set<Prostor> vychody; 
 
-    private Map<String,Vec> veci;
+    private final Map<String,Vec> veci;
     private HerniPlan plan;
-    private double posLeft;
-    private double posTop;
+    private final double posLeft;
+    private final double posTop;
     
  
     /**
@@ -32,6 +32,8 @@ public class Prostor {
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
+     * @param posTop
+     * @param posLeft
      */
     public Prostor(String nazev, String popis, double posTop,double posLeft) {
         this.nazev = nazev;
@@ -93,6 +95,7 @@ public class Prostor {
      * prekryti metody equals je potreba prekryt i metodu hashCode. Podrobny
      * popis pravidel pro vytvareni metody hashCode je u metody hashCode ve
      * tride Object
+     * @return 
      */
     @Override
     public int hashCode() {
@@ -140,10 +143,7 @@ public class Prostor {
      */
     private String popisVychodu() {
         String vracenyText = "východy:";
-        for (Prostor sousedni : vychody) {
-            vracenyText += " " + sousedni.getNazev();
-        
-        }
+        vracenyText = vychody.stream().map((sousedni) -> " " + sousedni.getNazev()).reduce(vracenyText, String::concat);
         return vracenyText;
     }
 /**
@@ -153,9 +153,7 @@ public class Prostor {
     private String popisVeci(){
      
         String vracenyText = "Věci: ";
-        for (String nazevVeci : veci.keySet()) {
-            vracenyText += " " + nazevVeci;
-        }
+        vracenyText = veci.keySet().stream().map((nazevVeci) -> " " + nazevVeci).reduce(vracenyText, String::concat);
         return vracenyText;
         
     }
@@ -251,9 +249,7 @@ public class Prostor {
  public String seznamVychoduProPanely() 
     {
         String vracenyText = "vychody:";
-        for (Prostor sousedni : vychody) {
-             vracenyText += " " + sousedni.getNazev();
-        }
+        vracenyText = vychody.stream().map((sousedni) -> " " + sousedni.getNazev()).reduce(vracenyText, String::concat);
         return vracenyText;
     }
   /**

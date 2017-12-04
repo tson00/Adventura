@@ -6,8 +6,9 @@
 package utils;
 
 /**
- *
- * @author acer
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
+ * update 
  */
 public interface Observer {
     public void update();

@@ -13,14 +13,15 @@ import java.io.*;
  *  
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 
 public class TextoveRozhrani {
-    private IHra hra;
+    private final IHra hra;
 
     /**
      *  Vytváří hru.
+     * @param hra
      */
     public TextoveRozhrani(IHra hra) {
         this.hra = hra;

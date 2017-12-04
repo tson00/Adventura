@@ -1,18 +1,17 @@
 
 package logika;
-import java.util.*;
 /**
  *  Třída PrikazNapoveda implementuje pro hru příkaz napoveda.
  *  Tato třída je součástí jednoduché textové hry.
  *  
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  *  
  */
 class PrikazNapoveda implements IPrikaz {
     
     private static final String NAZEV = "napoveda";
-    private SeznamPrikazu platnePrikazy;
+    private final SeznamPrikazu platnePrikazy;
    
    
     

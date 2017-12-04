@@ -13,16 +13,16 @@ import java.util.Map;
  *  Tato třída je součástí jednoduché textové hry.
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
  */
 class SeznamPrikazu {
     // mapa pro uložení přípustných příkazů
-    private  Map<String,IPrikaz> mapaSPrikazy;
+    private final  Map<String,IPrikaz> mapaSPrikazy;
     
    
     
     /**
-     * Konstruktor
+     * Konstruktor Seznamu Prikazu
      */
     public SeznamPrikazu() {
         mapaSPrikazy = new HashMap<>();
@@ -72,9 +72,7 @@ class SeznamPrikazu {
      */
     public String vratNazvyPrikazu() {
         String seznam = "";
-        for (String slovoPrikazu : mapaSPrikazy.keySet()){
-            seznam += slovoPrikazu + " ";
-        }
+        seznam = mapaSPrikazy.keySet().stream().map((slovoPrikazu) -> slovoPrikazu + " ").reduce(seznam, String::concat);
         return seznam;
     }
     

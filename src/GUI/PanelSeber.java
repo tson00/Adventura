@@ -8,9 +8,6 @@ package GUI;
 import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -21,9 +18,9 @@ import logika.Vec;
 import utils.Observer;
 
 /**
- * Panel zobrazující list s věci, které jsou v mistností
- *
- * @author Tsoy Nadezhda
+ * Panel zobrazující list s věci, které muzes sebrat
+ *@author     Tsoy Nadezhda
+ *@version    pro školní rok 2017/2018
  */
 
 
@@ -32,12 +29,13 @@ public class PanelSeber implements Observer{
     private HerniPlan plan;
     ListView<Object> list;
     ObservableList<Object> data;
-    private TextArea centralText;
+    private final TextArea centralText;
 
     /**
      * konstruktur
      *
      * @param plan
+     * @param text
      */
     
     
@@ -63,48 +61,43 @@ public class PanelSeber implements Observer{
         list.setPrefSize(100, 200);
         
         
-        list.setOnMouseClicked(new EventHandler<MouseEvent>() 
-        {
-            @Override
-            public void handle(MouseEvent click)
+        list.setOnMouseClicked((MouseEvent click) -> {
+            if (click.getClickCount() == 2)
             {
-                if (click.getClickCount() == 2) 
-                {
-                    int index = list.getSelectionModel().getSelectedIndex();
-                    
-                    Map<String, Vec> seznam;
-                    seznam = plan.getAktualniProstor().getVeci();
-                    
-                    String nazev = "";
-                    int pomocna = 0;
-                    for (String x : seznam.keySet()) 
-                    {
-                       if(pomocna == index)
-                       {
-                           
-                         
-                           
-                           if(seznam.get(x).jePrenositelna())
-                           {
-                           
-                           
-                             nazev = x;
-                           }
-                           else
-                           {pomocna--;}
-                       }
-                       pomocna++;
-                    }
-                  
-                    String vstupniPrikaz = "seber "+nazev;
-                    String odpovedHry = plan.getHra().zpracujPrikaz("seber "+nazev);
-
+                int index = list.getSelectionModel().getSelectedIndex(); 
                 
-                    centralText.appendText("\n" + vstupniPrikaz + "\n");
-                    centralText.appendText("\n" + odpovedHry + "\n");
-               
-                    plan.notifyObservers();
+                Map<String, Vec> seznam;
+                seznam = plan.getAktualniProstor().getVeci();
+                
+                String nazev = "";
+                int pomocna = 0;
+                for (String x : seznam.keySet())
+                {
+                    if(pomocna == index) 
+                    {
+                        
+                        
+                        
+                        if(seznam.get(x).jePrenositelna())
+                        {
+                            
+                            
+                            nazev = x;
+                        }
+                        else
+                        {pomocna--;}
+                    }
+                    pomocna++;
                 }
+                
+                String vstupniPrikaz = "seber "+nazev;
+                String odpovedHry = plan.getHra().zpracujPrikaz("seber "+nazev);
+                
+                
+                centralText.appendText("\n" + vstupniPrikaz + "\n");
+                centralText.appendText("\n" + odpovedHry + "\n");
+                
+                plan.notifyObservers();
             }
         });
         
@@ -131,19 +124,9 @@ public class PanelSeber implements Observer{
         Map<String, Vec> seznam;
         seznam = plan.getAktualniProstor().getVeci();
         data.clear();
-        for (String x : seznam.keySet()) 
-        {
-        Vec pomocna = seznam.get(x);
-     
-        if(pomocna.jePrenositelna()){
-        ImageView obrazek = new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 60, 60, false, false));
-        data.add(obrazek);
-        
-        
-        }
-     
-        
-        }
+        seznam.keySet().stream().map((x) -> seznam.get(x)).filter((pomocna) -> (pomocna.jePrenositelna())).map((pomocna) -> new ImageView(new Image(main.Main.class.getResourceAsStream(pomocna.getObrazek()), 60, 60, false, false))).forEachOrdered((obrazek) -> {
+            data.add(obrazek);
+        });
     }
     
     /**

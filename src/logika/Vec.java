@@ -9,21 +9,28 @@ package logika;
  * a zda za ni mozne se schovat
  *
  *@author     Tsoy Nadezhda
- *@version    pro školní rok 2016/2017
+ *@version    pro školní rok 2017/2018
+ * 
  */
 public class Vec
 {
     //== Datové atributy (statické i instancí)======================================
-    private String nazev;
+    private final String nazev;
 
-    private boolean prenositelnost;
-    private boolean jejidlo;
-    private boolean schovatse;
+    private final boolean prenositelnost;
+    private final boolean jejidlo;
+    private final boolean schovatse;
      private String obrazek;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....
+     * @param nazev
+     * @param prenositelnost
+     * @param jejidlo
+     * @param schovatse
+     * @param obrazek
+     * 
      */
     public Vec(String nazev, boolean prenositelnost,
     boolean jejidlo,boolean schovatse,String obrazek)
@@ -60,6 +67,7 @@ public class Vec
 /**
  * overuje zda je to jidlo
  * return je jidlo
+     * @return 
  */
     public boolean jeJeJidlo(){
         return jejidlo;
