@@ -18,14 +18,15 @@ interface IPrikaz {
      *  příkaz pouzij může mít dva parametry.
      *  
      *  @param parametry počet parametrů závisí na konkrétním příkazu.
+     * @return prikaz
      *  
      */
     public String provedPrikaz(String... parametry);
     
     /**
      *  Metoda vrací název příkazu (slovo které používá hráč pro jeho vyvolání)
+     *  @return nazev
      *  
-     *  @return nazev prikazu
      */
 	public String getNazev();
 	

@@ -23,9 +23,9 @@ private final List<Prostor> prostory;
 
     /***************************************************************************
      *  Konstruktor ....
-     * @param jmeno
-     * @param proslov
-     * @param pocatecni
+     * @param jmeno jmeno
+     * @param proslov proslov
+     * @param pocatecni pocatecni
      */
     public Postava(String jmeno,String proslov,Prostor pocatecni)
     {
@@ -63,14 +63,14 @@ public Prostor getAktualniProstor() {
     }
     /**
      * nastavi prostor
-     * @param prostor
+     * @param prostor prostor
      */
 public void setAktualniProstor(Prostor prostor){
 aktualniProstor=prostor;
 }
 /**
  * prida prostor 
-     * @param dalsiProstory
+     * @param dalsiProstory dalsi prostory
  */
 public void pridejProstory(Prostor...dalsiProstory){
 prostory.addAll(Arrays.asList(dalsiProstory));

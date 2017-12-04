@@ -3,21 +3,38 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/IHra.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelSeber.java</file>
-            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/Batoh.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/Prostor.java</file>
-            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelVeci.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/utils/Observer.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazJdi.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelVychody.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/HerniPlan.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazSchovat.java</file>
-            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelBatohu.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/nbproject/genfiles.properties</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/Vec.java</file>
-            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/main/Main.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/IPrikaz.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelSchovat.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazNapoveda.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/Mapa.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/Hra.java</file>
             <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/MenuLista.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/IHra.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/Batoh.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/build.xml</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazKonec.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelVeci.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/SeznamPrikazu.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/GUI/PanelBatohu.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/Postava.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazSeznamVeci.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/uiText/TextoveRozhrani.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazVyhodit.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/main/Main.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazSnist.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/utils/Subject.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/src/logika/PrikazSeber.java</file>
+            <file>file:/C:/Users/acer/Documents/NetBeansProjects/Adventura_UT_900/nbproject/project.properties</file>
         </group>
     </open-files>
 </project-private>

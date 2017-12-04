@@ -25,11 +25,11 @@ public class Vec
 
     /***************************************************************************
      *  Konstruktor ....
-     * @param nazev
-     * @param prenositelnost
-     * @param jejidlo
-     * @param schovatse
-     * @param obrazek
+     * @param nazev nazev
+     * @param prenositelnost prenositelnost
+     * @param jejidlo jejidlo
+     * @param schovatse schovatse
+     * @param obrazek obrazek
      * 
      */
     public Vec(String nazev, boolean prenositelnost,
@@ -66,8 +66,8 @@ public class Vec
      
 /**
  * overuje zda je to jidlo
- * return je jidlo
-     * @return 
+ * @return jejidlo
+     * 
  */
     public boolean jeJeJidlo(){
         return jejidlo;

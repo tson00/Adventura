@@ -32,8 +32,8 @@ public class HerniPlan implements Subject{
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví halu.
-     *  @param hra
-     */
+     *  @param hra hra
+     */ 
     public HerniPlan(Hra hra) {
         zalozProstoryHry();
         batoh = new Batoh();
@@ -286,7 +286,7 @@ public class HerniPlan implements Subject{
     
     /**
      *  Metoda je postava v Prostory     *
-     *@param  jmeno
+     *@param  jmeno jmeno
      *@return true nebo false
      */
      public boolean jePostavaVProstoru(String jmeno) {
@@ -295,7 +295,7 @@ public class HerniPlan implements Subject{
     }
       /**
      *  Metoda vrací postavu
-     * @param jmeno
+     * @param jmeno jmeno
      *  @return null postava
      * 
      *
@@ -323,7 +323,7 @@ public class HerniPlan implements Subject{
      *  
      *register observer
      *
-     * @param observer
+     * @param observer observer
      */
     @Override
    
@@ -334,7 +334,7 @@ public class HerniPlan implements Subject{
      *  
      *removeObserver
      *
-     * @param observer
+     * @param observer observer
      */
     @Override
    

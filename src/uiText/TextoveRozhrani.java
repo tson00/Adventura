@@ -21,7 +21,7 @@ public class TextoveRozhrani {
 
     /**
      *  Vytváří hru.
-     * @param hra
+     * @param hra hra
      */
     public TextoveRozhrani(IHra hra) {
         this.hra = hra;
@@ -48,7 +48,7 @@ public class TextoveRozhrani {
     
     /**
      *Metoda na to když chceme posílat příkazy ze souboru
-     *@param soubor
+     *@param soubor file
      */
 
    public void hrajZeSouboru(File soubor) {

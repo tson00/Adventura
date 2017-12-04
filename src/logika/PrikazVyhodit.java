@@ -20,9 +20,9 @@ public HerniPlan plan;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
-     *  Konstruktor ....
-     * @param batoh
-     * @param plan
+     *  Konstruktor .... 
+     * @param batoh batoh
+     * @param plan plan
      */
     public PrikazVyhodit(Batoh batoh, HerniPlan plan)
     {
@@ -41,7 +41,7 @@ public HerniPlan plan;
     /**
      * provede prikazy
      * @return text
-     * @param parametry
+     * @param parametry parametry
      * 
      */
  @Override

@@ -20,7 +20,7 @@ private static final String NAZEV = "schovat";
 
     /***************************************************************************
      *  Konstruktor ....
-     * @param plan
+     * @param plan plan
      */
     public PrikazSchovat(HerniPlan plan)
     {
@@ -33,7 +33,7 @@ private static final String NAZEV = "schovat";
     /**
      * provede prikaz
      * @return text co se deje
-     * @param parametry
+     * @param parametry parametry
      */
     
 @Override

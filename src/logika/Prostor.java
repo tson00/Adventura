@@ -32,8 +32,8 @@ public class Prostor {
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
-     * @param posTop
-     * @param posLeft
+     * @param posTop posTop
+     * @param posLeft posLeft
      */
     public Prostor(String nazev, String popis, double posTop,double posLeft) {
         this.nazev = nazev;
@@ -95,7 +95,7 @@ public class Prostor {
      * prekryti metody equals je potreba prekryt i metodu hashCode. Podrobny
      * popis pravidel pro vytvareni metody hashCode je u metody hashCode ve
      * tride Object
-     * @return 
+     * @return vysledek
      */
     @Override
     public int hashCode() {
@@ -196,7 +196,7 @@ public class Prostor {
     /**
      * metoda vloz vec
      * @return true false
-     * @param neco
+     * @param neco vec
      */
     public boolean vlozVec(Vec neco){
         if(veci.containsKey(neco.getNazev())){
@@ -209,7 +209,7 @@ public class Prostor {
     }
     /**
      * metoda je v Prostoru
-     * @param nazev
+     * @param nazev nazev
      * @return obsahuje nazev 
      * 
      */
@@ -220,7 +220,7 @@ public class Prostor {
     
 /**
  * metoda odeber Vec
- * @param nazev
+ * @param nazev nazev
  * @return smaze vec
  */
     public Vec odeberVec(String nazev){

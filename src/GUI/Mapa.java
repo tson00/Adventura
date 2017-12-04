@@ -25,7 +25,7 @@ public class Mapa extends AnchorPane implements Observer {
 
   /****  
   *
-  * @param hra
+  * @param hra hra
   */
   public Mapa(IHra hra){
    
@@ -53,7 +53,7 @@ public class Mapa extends AnchorPane implements Observer {
   }
   /***
    * 
-   * @param novaHra 
+   * @param novaHra nova Hra
    */
   public void newGame(IHra novaHra){
       hra.getHerniPlan().removeObserver(this);

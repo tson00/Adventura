@@ -19,7 +19,7 @@ public class PrikazSeznamVeci implements IPrikaz
 
     /***************************************************************************
      *  Konstruktor ....
-     * @param plan
+     * @param plan plan
      */
     public PrikazSeznamVeci(HerniPlan plan)
     {
@@ -28,7 +28,7 @@ public class PrikazSeznamVeci implements IPrikaz
         /**
      * provede prikazy
      * @return veci 
-     * @param parametry
+     * @param parametry parametry
      */
      @Override
     public String provedPrikaz(String... parametry)

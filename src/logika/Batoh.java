@@ -20,7 +20,7 @@ private final Map<String, Vec> veci;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
-     *  Konstruktor ....
+     *  Konstruktor Batohu
      */
     public Batoh()
     {
@@ -40,7 +40,7 @@ private final Map<String, Vec> veci;
     /**
      * vlozit vec v batoh
      * @return true false
-     * @param vec
+     * @param vec vec
      */
     public boolean vlozitVecBatoh(Vec vec)
     {
@@ -54,7 +54,7 @@ private final Map<String, Vec> veci;
     /**
      * vrati vec
      * @return vec
-     * @param nazev
+     * @param nazev nazev
      */
    public Vec getVec(String nazev)
    {
@@ -78,7 +78,7 @@ public String nazvyVeci () {
     /**
      * vyber vec
      * @return nalezena vec null
-     * @param nazev
+     * @param nazev nazev
      */
        public Vec vyberVec (String nazev) {
         Vec nalezenaVec ;
@@ -97,7 +97,7 @@ public String nazvyVeci () {
     /**
      * je tam vec 
      * @return zda je tam ta vec
-     * @param nazev
+     * @param nazev nazev
      */
 public boolean jeTamVec (String nazev) {
         return veci.containsKey(nazev);
